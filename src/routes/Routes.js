@@ -11,6 +11,9 @@ import Perfil from "../pages/usuarios/perfil";
 import Parentesco from "../pages/usuarios/parentesco";
 import EstadoCivil from "../pages/usuarios/estado-civil";
 import Religiao from "../pages/usuarios/religiao";
+import Cidade from "../pages/unidades/cidade/index";
+import Estado from '../pages/unidades/estado/index'
+import Bairro from '../pages/unidades/bairro/index'
 
 const RoutesApp = () => (
     <BrowserRouter basename="pax-primavera/configuracoes">
@@ -27,6 +30,11 @@ const RoutesApp = () => (
             <Route exact path="/usuarios/parentesco" element={<Parentesco />} />
             <Route exact path="/usuarios/estado-civil" element={<EstadoCivil/>} />
             <Route exact path="/usuarios/religiao" element={<Religiao />} />
+
+            <Route exact path="/unidades/estado" element={<Estado />} />
+            <Route exact path="/unidades/cidade" element={<Cidade />} />
+            <Route exact path="/unidades/bairro" element={<Bairro/>} />
+
         </Routes>
     </BrowserRouter>
 );

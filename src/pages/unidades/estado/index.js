@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import HeaderUsuarios from "../../../componentes/header-usuarios";
-import './religiao.css'
+import HeaderUnidade from "../../../componentes/header-unidades/index";
+import './estado.css'
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -18,41 +18,31 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ModalCadastro from "../../../componentes/modal-cadastro";
 
-function createData(name,  status, opcoes) {
-  return { name,  status, opcoes };
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+function createData(name, status, opcoes) {
+  return { name, status, opcoes };
 }
 
 const rows = [
   createData(
-    "Evangélica",
+    "MS",
     "Ativo",
   ),
   createData(
-    "Católica",
+    "MT",
     "Ativo",
   ),
   createData(
-    "Espírita",
-    "Ativo",
-  ),
-  createData(
-    "Judaica",
-    "Ativo",
-  ),
-  createData(
-    "Islâmica",
-    "Ativo",
-  ),
-  createData(
-    "Ateu",
+    "PR",
     "Ativo",
   ),
 ];
 
-const Religiao = () => {
+const Estado = () => {
   return (
     <div className="container-cadastro">
-      <HeaderUsuarios />
+      <HeaderUnidade />
       <div className="sub-container-cadastro">
         <ModalCadastro
           buttonText="CADASTRAR"
@@ -104,4 +94,4 @@ const Religiao = () => {
   );
 };
 
-export default Religiao;
+export default Estado;

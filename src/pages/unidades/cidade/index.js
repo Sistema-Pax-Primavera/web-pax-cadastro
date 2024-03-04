@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import HeaderUsuarios from "../../../componentes/header-usuarios";
-import './religiao.css'
+import HeaderUnidade from "../../../componentes/header-unidades/index";
+import './cidade.css'
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -18,41 +18,34 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ModalCadastro from "../../../componentes/modal-cadastro";
 
-function createData(name,  status, opcoes) {
-  return { name,  status, opcoes };
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+function createData(name, estado, status, opcoes) {
+  return { name, estado, status, opcoes };
 }
 
 const rows = [
   createData(
-    "Evangélica",
+    "Dourados",
+    "MS",
     "Ativo",
   ),
   createData(
-    "Católica",
+    "Itaporã",
+    "MS",
     "Ativo",
   ),
   createData(
-    "Espírita",
-    "Ativo",
-  ),
-  createData(
-    "Judaica",
-    "Ativo",
-  ),
-  createData(
-    "Islâmica",
-    "Ativo",
-  ),
-  createData(
-    "Ateu",
+    "Guairá",
+    "PR",
     "Ativo",
   ),
 ];
 
-const Religiao = () => {
+const Cidade = () => {
   return (
     <div className="container-cadastro">
-      <HeaderUsuarios />
+      <HeaderUnidade />
       <div className="sub-container-cadastro">
         <ModalCadastro
           buttonText="CADASTRAR"
@@ -65,6 +58,7 @@ const Religiao = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Nome</TableCell>
+                  <TableCell align="center">Estado</TableCell>
                   <TableCell align="center">Status</TableCell>
                   <TableCell align="center">OPÇÕES</TableCell>
                 </TableRow>
@@ -78,6 +72,7 @@ const Religiao = () => {
                     <TableCell component="th" scope="row">
                       {row.name}
                     </TableCell>
+                    <TableCell align="center">{row.estado}</TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
                       <div className="div-edit-cadastro-parentesco">
@@ -104,4 +99,4 @@ const Religiao = () => {
   );
 };
 
-export default Religiao;
+export default Cidade;

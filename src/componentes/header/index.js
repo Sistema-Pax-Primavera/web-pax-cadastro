@@ -37,8 +37,8 @@ const HeaderCadastro = ({ idioma }) => {
        Usuários
       </button>
       <button
-        onClick={() => handleMenuClick("/parentesco")}
-        className={activeRoute === "/estado-civil" ? "active" : ""}
+        onClick={() => handleMenuClick("/unidades")}
+        className={activeRoute === "/unidades" ? "active" : ""}
       >
         Unidades
       </button>
