@@ -1,0 +1,402 @@
+.sub-container-cadastro {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.sub-container-cadastro button {
+  width: 15%;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  background-color: var(--verde);
+  color: var(--branco);
+  font-weight: 700;
+  border-radius: 0px;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 5px;
+  font-size: 10px;
+}
+
+.div-edit-cadastro {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.edit-cadastro-01 {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-cadastro-02 {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-cadastro-01 button {
+  background-color: var(--verde);
+  color: var(--branco);
+  width: 50%;
+  border-radius: 10px;
+}
+
+.edit-cadastro-02 button {
+  background-color: var(--vermelho);
+  color: var(--branco);
+  width: 50%;
+  border-radius: 10px;
+}
+
+
+.cadastrar-icone-form{
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+  font-size: 10px;
+  color: var(--verde);
+}
+
+.cadastrar-icone-form h2{
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.nome-cadastro{
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  flex-wrap: wrap;
+}
+
+.nome-cadastro input{
+  background-color: var(--cinza-leve);
+  width: 100%;
+}
+
+
+.cpf-cadastro{
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+
+.cpf-cadastro input{
+  background-color: var(--cinza-leve);
+  width: 100%;
+}
+
+
+.campos-01-cadastro {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.campos-01-cadastro input {
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+
+.campos-01-cadastro select {
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+
+.campos-02-cadastro {
+  display: flex;
+  flex-direction: column;
+  width: 17%;
+}
+
+.campos-02-cadastro input {
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+
+.campos-03-cadastro {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.campos-04-cadastro input {
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+
+.campos-04-cadastro {
+  display: flex;
+  flex-direction: column;
+  width: 19%;
+}
+
+.campos-03-cadastro input {
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+
+
+.campos-03-cadastro select {
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+
+.campos-05-cadastro {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.campos-05-cadastro p{
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.selecione-cadastro{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.selecione-cadastro p{
+  color: var(--preto);
+  width: 50%;
+}
+
+.selecione-cadastro2{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--cinza-leve);
+  border-radius: 5px;
+  padding: 10px;
+  height: 15px;
+}
+
+.selecione-cadastro3{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--cinza-leve);
+  border-radius: 5px;
+  padding: 10px;
+  height: 15px;
+}
+
+.selecione-cadastro3 p{
+   color: black;
+   font-weight: 600;
+  width:36%;
+  font-size: 12px;
+}
+
+.select-permissoes{
+  width: 70%;
+}
+
+.select-permissoes select{
+  width: 100%;
+  font-weight: 600;
+  padding: 5px;
+  background-color: var(--branco);
+}
+
+.selecione-cadastro label{
+  text-align: center;
+  width: 100%;
+}
+
+.selecione-cadastro2 p{
+  width:20%;
+}
+
+.selecione-cadastro2 p{
+  color: black;
+  font-weight: 600;
+  width: 50%;
+  font-size: 13px;
+}
+
+
+.container-linha-cadastro{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.container-linha-cadastro2{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  gap: 5px;
+  width: 95%;
+}
+
+.container-linha-cadastro button{
+  background-color: var(--verde);
+  padding: 5px;
+  margin-top: 15px;
+  color: var(--branco);
+  border-radius: 5px;
+}
+
+.checkbox-icon{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  justify-content: center;
+  gap: 50px;
+}
+
+.checkbox-icon b{
+  color: var(--vermelho);
+}
+
+.unidade-cadastro{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.unidade-cadastro select{
+  background-color: var(--cinza-leve);
+  font-weight: 500;
+}
+
+.permissoes-cadastro{
+  width:40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.permissoes-cadastro select{
+  background-color: var(--cinza-leve);
+  font-weight: 500;
+}
+
+.container-linha2-cadastro{
+  display: flex;
+  width: 100%;
+}
+
+.permissoe-selecione-cadastro{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.permissoe-selecione-cadastro select{
+  background-color: var(--cinza-leve);
+  font-weight: 500;
+}
+
+.permissoe-selecione-cadastro2{
+  width: 30%;
+}
+
+.campos-05-cadastro input {
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+
+.campos-05-cadastro select {
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+
+
+
+.container-cadastro-linha{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.container-cadastro-linha3{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.container-cadastro-linha3 h1{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.colunas2-cadastro{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 40%;
+  padding: 10px;
+  border: 1px solid var(--verde);
+  border-radius: 5px;
+}
+
+.divide-2-cadastro{
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+
+.per-uni{
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.per-unidade2{
+  background-color: var(--cinza-leve);
+  padding: 10px;
+  color: var(--preto);
+  border-radius: 10px;
+  display: flex;
+  align-items: center; gap: 5px;
+}
+
+.per-unidade2 select{
+  font-weight: 500;
+  margin-right: 50px;
+}
+
+.per-unidade2 button{
+  background-color: var(--vermelho);
+  padding: 5px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  width: 10%;
+}
+
+.per-unidade2 label{
+  font-weight: 700;
+  color: var(--preto);
+  font-weight: 700;
+  width: 50%;
+}
+
+.per-uni3{
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
