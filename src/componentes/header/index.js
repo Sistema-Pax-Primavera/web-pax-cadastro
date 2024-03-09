@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import './header.css'
 
-
 const HeaderCadastro = ({ idioma }) => {
   const [activeRoute, setActiveRoute] = useState("");
   const navigate = useNavigate();
@@ -15,6 +14,11 @@ const HeaderCadastro = ({ idioma }) => {
     localStorage.setItem("page-venda", route);
     // Atualizar a rota ativa
     setActiveRoute(route);
+    // Selecionar automaticamente "Perfil" ao clicar em "Usuários"
+    if (route === "/usuarios") {
+      navigate("/usuarios/perfil");
+      setActiveRoute("/usuarios/perfil");
+    }
   };
 
   useEffect(() => {
@@ -32,7 +36,7 @@ const HeaderCadastro = ({ idioma }) => {
     <div className='navegacao-vendas'>
       <button
         onClick={() => handleMenuClick("/usuarios")}
-        className={activeRoute === "/usuarios" ? "active" : ""}
+        className={activeRoute && activeRoute.startsWith("/usuarios") ? "active" : ""}
       >
        Usuários
       </button>
