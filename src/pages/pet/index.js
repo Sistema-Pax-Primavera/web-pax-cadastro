@@ -1,9 +1,10 @@
 import React from 'react'
+import HeaderPet from '../../componentes/header-pet'
 
 const Pet = () => {
   return (
-    <div>
-      <h1>teste</h1>
+    <div className="container-cadastro">
+      <HeaderPet/>
     </div>
   )
 }

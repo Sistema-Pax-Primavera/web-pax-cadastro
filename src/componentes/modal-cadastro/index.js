@@ -3,7 +3,7 @@ import { CSSTransition } from "react-transition-group";
 import "./modal-cadastro.css";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-const ModalCadastro = ({ buttonText, icon, children, icone2, titulo }) => {
+const ModalCadastro = ({ buttonText, icon, children, icone2, titulo, height, width }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => {
@@ -24,7 +24,7 @@ const ModalCadastro = ({ buttonText, icon, children, icone2, titulo }) => {
         classNames="modal"
         unmountOnExit
       >
-        <div className="modal">
+        <div className="modal" style={{width: width}}>
           <div className="modal-content">
             <div className="fecha-modal-cadastro">
               <label>
@@ -34,7 +34,7 @@ const ModalCadastro = ({ buttonText, icon, children, icone2, titulo }) => {
                 <HighlightOffIcon fontSize={"large"} />
               </button>
             </div>
-            <div className="campos-do-cadastro">{children}</div>
+            <div className="campos-do-cadastro" style={{ height: height }}>{children}</div>
           </div>
          
         </div>

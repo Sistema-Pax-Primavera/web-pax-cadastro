@@ -27,22 +27,22 @@ const HeaderUsuarios = ({ idioma }) => {
        Perfil
       </button>
       <button
-        onClick={() => handleMenuClick("/usuarios/parentesco")}
-        className={activeRoute === "/usuarios/parentesco" ? "active" : ""}
+        onClick={() => handleMenuClick("/usuarios/funcao")}
+        className={activeRoute === "/usuarios/funcao" ? "active" : ""}
       >
-        Parentesco
+        Função
       </button>
       <button
-        onClick={() => handleMenuClick("/usuarios/estado-civil")}
-        className={activeRoute === "/usuarios/estado-civil" ? "active" : ""}
+        onClick={() => handleMenuClick("/usuarios/setor")}
+        className={activeRoute === "/usuarios/setor" ? "active" : ""}
       >
-        Estado Civil
+       Setor
       </button>
       <button
-        onClick={() => handleMenuClick("/usuarios/religiao")}
-        className={activeRoute === "/usuarios/religiao" ? "active" : ""}
+        onClick={() => handleMenuClick("/usuarios/permissao")}
+        className={activeRoute === "/usuarios/permissao" ? "active" : ""}
       >
-       Religião
+       Permissão
       </button>
       
     </div>

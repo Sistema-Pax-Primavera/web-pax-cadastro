@@ -41,34 +41,40 @@ const HeaderCadastro = ({ idioma }) => {
        Usuários
       </button>
       <button
-        onClick={() => handleMenuClick("/unidades")}
-        className={activeRoute === "/unidades" ? "active" : ""}
+        onClick={() => handleMenuClick("/cobranca")}
+        className={activeRoute === "/cobranca" ? "active" : ""}
       >
-        Unidades
+        Cobrança
       </button>
       <button
-        onClick={() => handleMenuClick("/religiao")}
+        onClick={() => handleMenuClick("/pet")}
         className={activeRoute === "/pet" ? "active" : ""}
       >
         Pet
       </button>
       <button
-        onClick={() => handleMenuClick("/setores")}
+        onClick={() => handleMenuClick("/atendimento")}
         className={activeRoute === "/setores" ? "active" : ""}
       >
-       Setores
+       Atendimento
       </button>
       <button
-        onClick={() => handleMenuClick("/forma-de-pagamento")}
-        className={activeRoute === "/forma-de-pagamento" ? "active" : ""}
+        onClick={() => handleMenuClick("/pax")}
+        className={activeRoute === "/pax" ? "active" : ""}
       >
-        Forma de Pagamento
+        Pax
       </button>
       <button
-        onClick={() => handleMenuClick("/atendimento")}
-        className={activeRoute === "/atendimento" ? "active" : ""}
+        onClick={() => handleMenuClick("/financeiro")}
+        className={activeRoute === "/financeiro" ? "active" : ""}
       >
-        Atendimento
+        Financeiro
+      </button>
+      <button
+        onClick={() => handleMenuClick("/item")}
+        className={activeRoute === "/item" ? "active" : ""}
+      >
+        Itens Planos
       </button>
     </div>
   );

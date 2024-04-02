@@ -1,0 +1,58 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from "react-router-dom";
+import './header-cobranca.css'
+
+
+const HeaderCobranca = ({ idioma }) => {
+  const [activeRoute, setActiveRoute] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleMenuClick = (route) => {
+    // Navegar para a rota específica
+    navigate(route);
+    // Salvar a rota no localStorage
+    localStorage.setItem("page-venda", route);
+    // Atualizar a rota ativa
+    setActiveRoute(route);
+  };
+
+  return (
+    <div className='navegacao-vendas'>
+      <label>Cobranca</label>
+      <button
+        onClick={() => handleMenuClick("/cobranca/rota")}
+        className={activeRoute === "/cobranca/rota" ? "active" : ""}
+      >
+       Rota
+      </button>
+      <button
+        onClick={() => handleMenuClick("/cobranca/bairro")}
+        className={activeRoute === "/cobranca/bairro" ? "active" : ""}
+      >
+       Bairro
+      </button>
+      <button
+        onClick={() => handleMenuClick("/cobranca/regiao-bairro")}
+        className={activeRoute === "/cobranca/regiao-bairro" ? "active" : ""}
+      >
+        Região Bairro
+      </button>
+      <button
+        onClick={() => handleMenuClick("/cobranca/municipio")}
+        className={activeRoute === "/cobranca/municipio" ? "active" : ""}
+      >
+        Município
+      </button>
+      <button
+        onClick={() => handleMenuClick("/cobranca/bordero")}
+        className={activeRoute === "/cobranca/bordero" ? "active" : ""}
+      >
+        Borderô
+      </button>
+      
+    </div>
+  );
+};
+
+export default HeaderCobranca;
