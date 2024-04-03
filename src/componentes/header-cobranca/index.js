@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import './header-cobranca.css'
-
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const HeaderCobranca = ({ idioma }) => {
   const [activeRoute, setActiveRoute] = useState("");
@@ -17,8 +17,16 @@ const HeaderCobranca = ({ idioma }) => {
     setActiveRoute(route);
   };
 
+  const handleVoltar = () => {
+    navigate(-1);
+  };
+
+
   return (
     <div className='navegacao-vendas'>
+      <div className="back-header">
+        <a onClick={handleVoltar}><ArrowBackIosNewIcon fontSize={'small'}/> VOLTAR</a>
+      </div>
       <label>Cobranca</label>
       <button
         onClick={() => handleMenuClick("/cobranca/rota")}

@@ -18,6 +18,8 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ModalCadastro from "../../../componentes/modal-cadastro";
 import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -25,17 +27,44 @@ function createData(name, regiao, unidade, usuario, status, opcoes) {
   return { name, regiao, unidade, usuario, status, opcoes };
 }
 
-const rows = [
+const funcaoData = [
   createData( "Teste", "Região 01", "Dourados", "Carlos", "Ativo"),
   createData( "Teste", "Região 02", "Dourados", "Luiz", "Ativo"),
   createData( "Teste", "Região 03", "Itaporã", "Luiz", "Ativo"),
 ];
 
 const Bordero = () => {
+  const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
+
+  const handleStatusChange = (index) => {
+    const updatedFuncao = funcaoEstado.map((funcao, i) => {
+      if (i === index) {
+        return {
+          ...funcao,
+          status: funcao.status === "Ativo" ? "Inativo" : "Ativo",
+        };
+      }
+      return funcao;
+    });
+    setFuncaoEstado(updatedFuncao);
+  };
+  
   return (
     <div className="container-cadastro">
       <HeaderCobranca />
       <div className="sub-container-cadastro">
+      <div className="pesquisa-tabelas-cadastro">
+      <div className="input-pesquisa-cadastro3">
+            <input placeholder="Informe o nome"></input>
+          </div>
+          <div className="tamanho-botao-pesquisa">
+            <ButtonIconTextoStart
+              title={"PESQUISAR"}
+              corFundoBotao={"#006b33"}
+              corTextoBotao={"#ffff"}
+              fontSizeBotao={'10px'}
+            />
+          </div>
         <ModalCadastro
           buttonText="CADASTRAR"
           icone2={<ArticleIcon />} // Ícone do Material UI
@@ -65,6 +94,7 @@ const Bordero = () => {
             </div>
           }
         ></ModalCadastro>
+        </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -79,7 +109,7 @@ const Bordero = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+              {funcaoEstado.map((row, index) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -92,16 +122,27 @@ const Bordero = () => {
                     <TableCell align="center">{row.usuario}</TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
-                      <div className="div-edit-cadastro-parentesco">
+                    <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
                           <button>
                             <ModeEditOutlineIcon fontSize={"small"} />
                           </button>
                         </div>
-                        <div className="edit-cadastro-paren">
-                          <button>
-                            <CancelIcon fontSize={"small"} />
-                          </button>
+                        <div className="edit-gren-red">
+                          <div
+                            onClick={() => handleStatusChange(index)}
+                            className={
+                              row.status === "Ativo"
+                                ? "green-background"
+                                : "red-background"
+                            }
+                          >
+                            {row.status === "Ativo" ? (
+                              <CheckCircleOutlineIcon /> // Cor branca para visibilidade
+                            ) : (
+                              <HighlightOffIcon />
+                            )}
+                          </div>
                         </div>
                       </div>
                     </TableCell>

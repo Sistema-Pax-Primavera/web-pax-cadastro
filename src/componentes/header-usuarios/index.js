@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import './header.css'
-
+import "./header.css";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const HeaderUsuarios = ({ idioma }) => {
   const [activeRoute, setActiveRoute] = useState("");
@@ -17,14 +17,23 @@ const HeaderUsuarios = ({ idioma }) => {
     setActiveRoute(route);
   };
 
+  const handleVoltar = () => {
+    navigate(-1);
+  };
+
   return (
-    <div className='navegacao-vendas'>
+    <div className="navegacao-vendas">
+      <div className="back-header">
+        <a onClick={handleVoltar}>
+          <ArrowBackIosNewIcon fontSize={"small"} /> VOLTAR
+        </a>
+      </div>
       <label>Usuário</label>
       <button
         onClick={() => handleMenuClick("/usuarios/perfil")}
         className={activeRoute === "/usuarios/perfil" ? "active" : ""}
       >
-       Perfil
+        Perfil
       </button>
       <button
         onClick={() => handleMenuClick("/usuarios/funcao")}
@@ -36,15 +45,14 @@ const HeaderUsuarios = ({ idioma }) => {
         onClick={() => handleMenuClick("/usuarios/setor")}
         className={activeRoute === "/usuarios/setor" ? "active" : ""}
       >
-       Setor
+        Setor
       </button>
       <button
         onClick={() => handleMenuClick("/usuarios/permissao")}
         className={activeRoute === "/usuarios/permissao" ? "active" : ""}
       >
-       Permissão
+        Permissão
       </button>
-      
     </div>
   );
 };

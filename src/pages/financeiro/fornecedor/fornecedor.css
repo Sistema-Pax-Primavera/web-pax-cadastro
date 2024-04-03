@@ -34,24 +34,23 @@
 }
 
 .green-background {
-    background-color: var(--verde);
-    border: none;
-    display: flex;
-    align-items: center;
-    color: var(--branco);
-    justify-content: center;
-    border-radius: 10px; /* ou qualquer outro valor desejado */
-    padding: 5px; /* ou qualquer outro valor desejado */
-  }
-  
-  .red-background {
-    background-color: var(--vermelho);
-    border: none;
-    display: flex;
-    color: var(--branco);
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px; /* ou qualquer outro valor desejado */
-    padding: 5px; /* ou qualquer outro valor desejado */
-  }
-  
+  background-color: var(--verde);
+  border: none;
+  display: flex;
+  align-items: center;
+  color: var(--branco);
+  justify-content: center;
+  border-radius: 10px; /* ou qualquer outro valor desejado */
+  padding: 5px; /* ou qualquer outro valor desejado */
+}
+
+.red-background {
+  background-color: var(--vermelho);
+  border: none;
+  display: flex;
+  color: var(--branco);
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; /* ou qualquer outro valor desejado */
+  padding: 5px; /* ou qualquer outro valor desejado */
+}

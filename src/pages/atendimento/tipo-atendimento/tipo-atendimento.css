@@ -26,3 +26,12 @@
     border-radius: 10px;
     width: 20%;
 }
+
+.input-pesquisa-cadastro3{
+    width: 35%;
+}
+
+.input-pesquisa-cadastro3 input{
+    background-color: var(--cinza-leve);
+    width: 96%;
+}

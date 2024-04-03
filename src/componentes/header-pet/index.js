@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import './header-pet.css'
-
+import "./header-pet.css";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const HeaderPet = ({ idioma }) => {
   const [activeRoute, setActiveRoute] = useState("");
@@ -17,14 +17,23 @@ const HeaderPet = ({ idioma }) => {
     setActiveRoute(route);
   };
 
+  const handleVoltar = () => {
+    navigate(-1);
+  };
+
   return (
-    <div className='navegacao-vendas'>
+    <div className="navegacao-vendas">
+      <div className="back-header">
+        <a onClick={handleVoltar}>
+          <ArrowBackIosNewIcon fontSize={"small"} /> VOLTAR
+        </a>
+      </div>
       <label>Pet</label>
       <button
         onClick={() => handleMenuClick("/pet/raca")}
         className={activeRoute === "/pet/raca" ? "active" : ""}
       >
-       Raça
+        Raça
       </button>
       <button
         onClick={() => handleMenuClick("/pet/especie")}
@@ -32,8 +41,6 @@ const HeaderPet = ({ idioma }) => {
       >
         Espécie
       </button>
-      
-      
     </div>
   );
 };

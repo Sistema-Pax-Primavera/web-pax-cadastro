@@ -26,3 +26,11 @@
     border-radius: 10px;
     width: 20%;
 }
+.pesquisa-tabelas-cadastro input{
+    font-weight: 500;
+    background-color: var(--cinza-leve);
+}
+
+.tamanho-botao-pesquisa{
+    width: 13%;
+}

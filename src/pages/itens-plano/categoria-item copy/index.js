@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import HeaderUsuarios from "../../../componentes/header-usuarios";
-import "./planos.css";
+import "./item.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -18,9 +17,9 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ModalCadastro from "../../../componentes/modal-cadastro";
 import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
-import HeaderPax from "../../../componentes/header-pax";
+import HeaderPet from "../../../componentes/header-pet";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-
+import HeaderItem from "../../../componentes/header-item";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -29,12 +28,12 @@ function createData(name, status, opcoes) {
 }
 
 const funcaoData = [
-  createData("Pai", "Ativo"),
-  createData("Mãe", "Ativo"),
-  createData("Filho(a)", "Ativo"),
+  createData("Teste 01", "Ativo"),
+  createData("Teste 02", "Ativo"),
+  createData("Teste 03", "Ativo"),
 ];
 
-const Planos = () => {
+const Item = () => {
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
 
   const handleStatusChange = (index) => {
@@ -52,10 +51,10 @@ const Planos = () => {
 
   return (
     <div className="container-cadastro">
-      <HeaderPax/>
+      <HeaderItem />
       <div className="sub-container-cadastro">
-      <div className="pesquisa-tabelas-cadastro">
-      <div className="input-pesquisa-cadastro3">
+        <div className="pesquisa-tabelas-cadastro">
+        <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">
@@ -66,33 +65,38 @@ const Planos = () => {
               fontSizeBotao={"10px"}
             />
           </div>
-        <ModalCadastro
-          buttonText="CADASTRAR"
-          icone2={<ArticleIcon fontSize={'small'}/>} // Ícone do Material UI
-          titulo="Cadastrar"
-          children={
-            <div className="linhas-campos-cadastro">
-              <div className="tipo-parentesco-cadas">
-                <label>Tipo de Parentesco</label>
-                <input></input>
+          <ModalCadastro
+            buttonText="CADASTRAR"
+            icone2={<ArticleIcon />} // Ícone do Material UI
+            titulo="Cadastrar" // Título do Modal
+            children={
+              <div className="linhas-campos-cadastro">
+                <div className="tipo-raca-cadas">
+                  <label>Item</label>
+                  <input></input>
+                </div>
+                <div className="tipo-raca-cadas">
+                  <label>Categoria </label>
+                  <input></input>
+                </div>
+
+                <div className="buttao-salvar-raca">
+                  <ButtonIconTextoStart
+                    title={"SALVAR"}
+                    corFundoBotao={"#006b33"}
+                    corTextoBotao={"#ffff"}
+                  />
+                </div>
               </div>
-              <div className="buttao-salvar-parentesco">
-                <ButtonIconTextoStart
-                  title={"SALVAR"}
-                  corFundoBotao={"#006b33"}
-                  corTextoBotao={"#ffff"}
-                />
-              </div>
-            </div>
-          } // Título do Modal
-        ></ModalCadastro>
+            }
+          ></ModalCadastro>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Nome</TableCell>
+                  <TableCell>Item</TableCell>
                   <TableCell align="center">Status</TableCell>
                   <TableCell align="center">OPÇÕES</TableCell>
                 </TableRow>
@@ -108,7 +112,7 @@ const Planos = () => {
                     </TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
-                    <div className="div-edit-cadastro-parentesco">
+                      <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
                           <button>
                             <ModeEditOutlineIcon fontSize={"small"} />
@@ -143,4 +147,4 @@ const Planos = () => {
   );
 };
 
-export default Planos;
+export default Item;

@@ -18,6 +18,8 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ModalCadastro from "../../../componentes/modal-cadastro";
 import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
 import HeaderPet from "../../../componentes/header-pet";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import HeaderItem from "../../../componentes/header-item";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -25,38 +27,66 @@ function createData(name, status, opcoes) {
   return { name, status, opcoes };
 }
 
-const rows = [
+const funcaoData = [
   createData("Teste 01", "Ativo"),
   createData("Teste 02", "Ativo"),
   createData("Teste 03", "Ativo"),
 ];
 
 const CategoriaItem = () => {
+  const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
+
+  const handleStatusChange = (index) => {
+    const updatedFuncao = funcaoEstado.map((funcao, i) => {
+      if (i === index) {
+        return {
+          ...funcao,
+          status: funcao.status === "Ativo" ? "Inativo" : "Ativo",
+        };
+      }
+      return funcao;
+    });
+    setFuncaoEstado(updatedFuncao);
+  };
+
   return (
     <div className="container-cadastro">
-      <HeaderPet />
+      <HeaderItem />
       <div className="sub-container-cadastro">
-        <ModalCadastro
-          buttonText="CADASTRAR"
-          icone2={<ArticleIcon />} // Ícone do Material UI
-          titulo="Cadastrar" // Título do Modal
-          children={
-            <div className="linhas-campos-cadastro">
-              <div className="tipo-raca-cadas">
-                <label>Item Categoria</label>
-                <input></input>
+        <div className="pesquisa-tabelas-cadastro">
+        <div className="input-pesquisa-cadastro3">
+            <input placeholder="Informe o nome"></input>
+          </div>
+          <div className="tamanho-botao-pesquisa">
+            <ButtonIconTextoStart
+              title={"PESQUISAR"}
+              corFundoBotao={"#006b33"}
+              corTextoBotao={"#ffff"}
+              fontSizeBotao={"10px"}
+            />
+          </div>
+          <ModalCadastro
+            buttonText="CADASTRAR"
+            icone2={<ArticleIcon />} // Ícone do Material UI
+            titulo="Cadastrar" // Título do Modal
+            children={
+              <div className="linhas-campos-cadastro">
+                <div className="tipo-raca-cadas">
+                  <label>Item Categoria</label>
+                  <input></input>
+                </div>
+
+                <div className="buttao-salvar-raca">
+                  <ButtonIconTextoStart
+                    title={"SALVAR"}
+                    corFundoBotao={"#006b33"}
+                    corTextoBotao={"#ffff"}
+                  />
+                </div>
               </div>
-              
-              <div className="buttao-salvar-raca">
-                <ButtonIconTextoStart
-                  title={"SALVAR"}
-                  corFundoBotao={"#006b33"}
-                  corTextoBotao={"#ffff"}
-                />
-              </div>
-            </div>
-          }
-        ></ModalCadastro>
+            }
+          ></ModalCadastro>
+        </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -68,7 +98,7 @@ const CategoriaItem = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {funcaoEstado.map((row, index) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -84,10 +114,21 @@ const CategoriaItem = () => {
                             <ModeEditOutlineIcon fontSize={"small"} />
                           </button>
                         </div>
-                        <div className="edit-cadastro-paren">
-                          <button>
-                            <CancelIcon fontSize={"small"} />
-                          </button>
+                        <div className="edit-gren-red">
+                          <div
+                            onClick={() => handleStatusChange(index)}
+                            className={
+                              row.status === "Ativo"
+                                ? "green-background"
+                                : "red-background"
+                            }
+                          >
+                            {row.status === "Ativo" ? (
+                              <CheckCircleOutlineIcon /> // Cor branca para visibilidade
+                            ) : (
+                              <HighlightOffIcon />
+                            )}
+                          </div>
                         </div>
                       </div>
                     </TableCell>

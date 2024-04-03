@@ -28,3 +28,20 @@
     border-bottom: 3px solid yellow;
     transform: none;
 }
+
+.back-header{
+    width: 100%;
+    cursor: pointer;
+}
+
+.back-header a{
+    background-color: var(--verde);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--branco);
+    padding: 5px;
+    gap: 10px;
+}

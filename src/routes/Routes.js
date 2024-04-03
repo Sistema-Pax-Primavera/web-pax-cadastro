@@ -2,9 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Cadastro from "../pages/cadastro";
 import Usuarios from '../pages/usuarios/index'
-import Setores from '../pages/setores/index'
 import Pet from '../pages/pet/index'
-import FormaDePagamento from '../pages/forma-pagamento/index'
 import Atendimento from '../pages/atendimento/index'
 import Perfil from "../pages/usuarios/perfil";
 import Parentesco from "../pages/pax/parentesco";
@@ -31,8 +29,6 @@ import Profissao from '../pages/pax/profissao'
 import CrmVendas from "../pages/pax/crm-vendas";
 import CrmCancelamento from "../pages/pax/crm-cancelamento";
 import Pax from "../pages/pax";
-import CategoriaItem from "../pages/itens-plano/categoria-item";
-import Item from "../pages/itens-plano/item";
 import ItensPlano from "../pages/itens-plano";
 import Financeiro from "../pages/financeiro";
 import Conta from "../pages/financeiro/conta";
@@ -42,6 +38,8 @@ import Fornecedor from "../pages/financeiro/fornecedor";
 import Funcao from "../pages/usuarios/funcao";
 import Permissao from "../pages/usuarios/permissao";
 import Setor from "../pages/usuarios/setor";
+import CategoriaItem from "../pages/itens-plano/categoria-item copy";
+import Item from "../pages/itens-plano/categoria-item copy";
 
 const RoutesApp = () => (
     <BrowserRouter basename="pax-primavera/configuracoes">
@@ -50,8 +48,6 @@ const RoutesApp = () => (
             <Route exact path="/usuarios" element={<Usuarios />} />
             <Route exact path="/cobranca" element={<Cobranca />} />
             <Route exact path="/pet" element={<Pet />} />
-            <Route exact path="/setores" element={<Setores />} />
-            <Route exact path="/forma-de-pagamento" element={<FormaDePagamento/>} />
             <Route exact path="/atendimento" element={<Atendimento />} />
 
             <Route exact path="/usuarios/perfil" element={<Perfil />} />

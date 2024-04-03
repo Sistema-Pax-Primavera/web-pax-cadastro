@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import './header-financeiro.css'
-
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const HeaderFinanceiro = ({ idioma }) => {
   const [activeRoute, setActiveRoute] = useState("");
@@ -16,9 +16,15 @@ const HeaderFinanceiro = ({ idioma }) => {
     // Atualizar a rota ativa
     setActiveRoute(route);
   };
+  const handleVoltar = () => {
+    navigate(-1);
+  };
 
   return (
     <div className='navegacao-vendas'>
+            <div className="back-header">
+        <a onClick={handleVoltar}><ArrowBackIosNewIcon fontSize={'small'}/> VOLTAR</a>
+      </div>
       <label>Financeiro</label>
       <button
         onClick={() => handleMenuClick("/financeiro/conta")}

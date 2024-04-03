@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import './header.css'
+import "./header.css";
 
 const HeaderCadastro = ({ idioma }) => {
   const [activeRoute, setActiveRoute] = useState("");
@@ -8,18 +8,28 @@ const HeaderCadastro = ({ idioma }) => {
   const location = useLocation();
 
   const handleMenuClick = (route) => {
-    // Navegar para a rota específica
-    navigate(route);
+    // Definir as rotas padrão para cada rota específica
+    const defaultRoutes = {
+      "/usuarios": "/usuarios/perfil",
+      "/cobranca": "/cobranca/rota",
+      "/pet": "/pet/raca",
+      "/atendimento": "/atendimento/tipo-atendimento",
+      "/pax": "/pax/planos",
+      "/financeiro": "/financeiro/conta",
+      "/item": "/item/categoria-item"
+    };
+  
+    // Navegar para a rota específica ou para sua rota padrão
+    const defaultRoute = defaultRoutes[route] || route;
+    navigate(defaultRoute);
+  
     // Salvar a rota no localStorage
     localStorage.setItem("page-venda", route);
+  
     // Atualizar a rota ativa
-    setActiveRoute(route);
-    // Selecionar automaticamente "Perfil" ao clicar em "Usuários"
-    if (route === "/usuarios") {
-      navigate("/usuarios/perfil");
-      setActiveRoute("/usuarios/perfil");
-    }
+    setActiveRoute(defaultRoute);
   };
+  
 
   useEffect(() => {
     const savedPage = localStorage.getItem("page-venda");
@@ -33,12 +43,14 @@ const HeaderCadastro = ({ idioma }) => {
   }, [location.pathname]);
 
   return (
-    <div className='navegacao-vendas'>
+    <div className="navegacao-vendas">
       <button
         onClick={() => handleMenuClick("/usuarios")}
-        className={activeRoute && activeRoute.startsWith("/usuarios") ? "active" : ""}
+        className={
+          activeRoute && activeRoute.startsWith("/usuarios") ? "active" : ""
+        }
       >
-       Usuários
+        Usuários
       </button>
       <button
         onClick={() => handleMenuClick("/cobranca")}
@@ -56,7 +68,7 @@ const HeaderCadastro = ({ idioma }) => {
         onClick={() => handleMenuClick("/atendimento")}
         className={activeRoute === "/setores" ? "active" : ""}
       >
-       Atendimento
+        Atendimento
       </button>
       <button
         onClick={() => handleMenuClick("/pax")}

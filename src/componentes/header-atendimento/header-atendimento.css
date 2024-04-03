@@ -7,6 +7,22 @@
     margin-bottom: 50px;
 }
 
+.back-header{
+    width: 100%;
+}
+
+.back-header a{
+    background-color: var(--verde);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--branco);
+    padding: 5px;
+    gap: 10px;
+}
+
 .navegacao-vendas button {
     background-color: var(--verde);
     transform: none;

@@ -36,6 +36,18 @@ const Estado = () => {
     <div className="container-cadastro">
       <HeaderCobranca />
       <div className="sub-container-cadastro">
+      <div className="pesquisa-tabelas-cadastro">
+      <div className="input-pesquisa-cadastro3">
+            <input placeholder="Informe o nome"></input>
+          </div>
+          <div className="tamanho-botao-pesquisa">
+            <ButtonIconTextoStart
+              title={"PESQUISAR"}
+              corFundoBotao={"#006b33"}
+              corTextoBotao={"#ffff"}
+              fontSizeBotao={'10px'}
+            />
+          </div>
         <ModalCadastro
           buttonText="CADASTRAR"
           icone2={<ArticleIcon />} // Ícone do Material UI
@@ -85,6 +97,7 @@ const Estado = () => {
             </div>
           }
         ></ModalCadastro>
+        </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">

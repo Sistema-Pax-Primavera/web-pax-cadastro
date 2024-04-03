@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import './header-pax.css'
-
+import "./header-pax.css";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const HeaderPax = ({ idioma }) => {
   const [activeRoute, setActiveRoute] = useState("");
@@ -16,21 +16,28 @@ const HeaderPax = ({ idioma }) => {
     // Atualizar a rota ativa
     setActiveRoute(route);
   };
-
+  const handleVoltar = () => {
+    navigate(-1);
+  };
   return (
-    <div className='navegacao-vendas'>
+    <div className="navegacao-vendas">
+      <div className="back-header">
+        <a onClick={handleVoltar}>
+          <ArrowBackIosNewIcon fontSize={"small"} /> VOLTAR
+        </a>
+      </div>
       <label>Pax</label>
       <button
         onClick={() => handleMenuClick("/pax/planos")}
         className={activeRoute === "/pax/planos" ? "active" : ""}
       >
-       Planos
+        Planos
       </button>
       <button
         onClick={() => handleMenuClick("/pax/adicionais")}
         className={activeRoute === "/pax/adicionais" ? "active" : ""}
       >
-       Adicionais
+        Adicionais
       </button>
       <button
         onClick={() => handleMenuClick("/pax/parentesco")}
@@ -44,18 +51,18 @@ const HeaderPax = ({ idioma }) => {
       >
         Religião
       </button>
-      
+
       <button
         onClick={() => handleMenuClick("/pax/estado-civil")}
         className={activeRoute === "/pax/estado-civil" ? "active" : ""}
       >
-       Estado Civil
+        Estado Civil
       </button>
       <button
         onClick={() => handleMenuClick("/pax/concorrencia")}
         className={activeRoute === "/pax/concorrencia" ? "active" : ""}
       >
-       Concorrencia
+        Concorrencia
       </button>
       <button
         onClick={() => handleMenuClick("/pax/categoria")}
@@ -99,7 +106,6 @@ const HeaderPax = ({ idioma }) => {
       >
         Crm Cancelamento
       </button>
-      
     </div>
   );
 };
