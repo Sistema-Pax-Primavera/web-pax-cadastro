@@ -267,7 +267,7 @@ const Perfil = () => {
                   <TableCell align="center">CPF</TableCell>
                   <TableCell align="center">RG</TableCell>
                   <TableCell align="center">Status</TableCell>
-                  <TableCell align="center">OPÇÕES</TableCell>
+                  <TableCell align="center">OPÇÕES</TableCell>  
                 </TableRow>
               </TableHead>
               <TableBody>

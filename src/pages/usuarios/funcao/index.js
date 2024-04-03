@@ -52,9 +52,7 @@ const Funcao = () => {
       <HeaderUsuarios />
       <div className="sub-container-cadastro">
         <div className="pesquisa-tabelas-cadastro">
-        <div className="input-pesquisa-cadastro3">
-            <input placeholder="Informe o nome"></input>
-          </div>
+          <input placeholder="Informe o nome"></input>
           <div className="tamanho-botao-pesquisa">
             <ButtonIconTextoStart
               title={"PESQUISAR"}

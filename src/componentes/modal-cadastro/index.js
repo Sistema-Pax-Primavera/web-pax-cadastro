@@ -25,7 +25,7 @@ const ModalCadastro = ({ buttonText, icon, children, icone2, titulo, height, wid
         unmountOnExit
       >
         <div className="modal" style={{width: width}}>
-          <div className="modal-content">
+          <div className="modal-content2">
             <div className="fecha-modal-cadastro">
               <label>
                 {icone2} {titulo}
