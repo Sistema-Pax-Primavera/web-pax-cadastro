@@ -19,7 +19,7 @@ import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import HeaderPax from "../../../components/header-pax";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-
+import ModalEdicao from "../../../components/modal-edicao";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -35,7 +35,8 @@ const funcaoData = [
 
 const Concorrencia = () => {
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
-
+  const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
+  const [modalCadastroOpen, setModalCadastro] = useState(false);
   const handleStatusChange = (index) => {
     const updatedFuncao = funcaoEstado.map((funcao, i) => {
       if (i === index) {
@@ -47,6 +48,21 @@ const Concorrencia = () => {
       return funcao;
     });
     setFuncaoEstado(updatedFuncao);
+  };
+  const handleOpenModalEdicao = () => {
+    setModalEdicaoOpen(true);
+  };
+
+  const handleCloseModalEdicao = () => {
+    setModalEdicaoOpen(false);
+  };
+
+  const abrirModalCadastro = () => {
+    setModalCadastro(true);
+  };
+
+  const fecharModalCadastro = () => {
+    setModalCadastro(false);
   };
   return (
     <div className="container-cadastro">
@@ -64,26 +80,49 @@ const Concorrencia = () => {
               fontSizeBotao={"10px"}
             />
           </div>
-          <ModalCadastro
-            buttonText="CADASTRAR"
-            icone2={<ArticleIcon fontSize={'small'} />} // Ícone do Material UI
+          <div className="tamanho-botao-pesquisa">
+            <ButtonIconTextoStart
+              title={"Cadastrar"}
+              corFundoBotao={"#006b33"}
+              corTextoBotao={"#ffff"}
+              fontSizeBotao={"10px"}
+              funcao={() => abrirModalCadastro()}
+            />
+          </div>
+          <ModalEdicao
             titulo="Cadastrar"
-            children={
-              <div className="linhas-campos-cadastro">
-                <div className="tipo-parentesco-cadas">
-                  <label>Concorrência</label>
-                  <input></input>
-                </div>
-                <div className="buttao-salvar-parentesco">
-                  <ButtonIconTextoStart
-                    title={"SALVAR"}
-                    corFundoBotao={"#006b33"}
-                    corTextoBotao={"#ffff"}
-                  />
-                </div>
+            isOpen={modalCadastroOpen}
+            onClose={fecharModalCadastro}
+          >
+            <div className="linhas-campos-cadastro">
+              <div className="tipo-parentesco-cadas">
+                <label>Concorrência</label>
+                <input></input>
               </div>
-            } // Título do Modal
-          ></ModalCadastro>
+              <div className="buttao-salvar-parentesco">
+                <ButtonIconTextoStart
+                  title={"SALVAR"}
+                  corFundoBotao={"#006b33"}
+                  corTextoBotao={"#ffff"}
+                />
+              </div>
+            </div>
+          </ModalEdicao>
+          <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
+            <div className="linhas-campos-cadastro">
+              <div className="tipo-parentesco-cadas">
+                <label>Concorrência</label>
+                <input></input>
+              </div>
+              <div className="buttao-salvar-parentesco">
+                <ButtonIconTextoStart
+                  title={"SALVAR"}
+                  corFundoBotao={"#006b33"}
+                  corTextoBotao={"#ffff"}
+                />
+              </div>
+            </div>
+          </ModalEdicao>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
@@ -108,7 +147,7 @@ const Concorrencia = () => {
                     <TableCell align="center">
                       <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
-                          <button>
+                        <button onClick={() => handleOpenModalEdicao()}>
                             <ModeEditOutlineIcon fontSize={"small"} />
                           </button>
                         </div>

@@ -38,8 +38,8 @@ import Fornecedor from "../pages/financeiro/fornecedor";
 import Funcao from "../pages/usuarios/funcao";
 import Permissao from "../pages/usuarios/permissao";
 import Setor from "../pages/usuarios/setor";
-import CategoriaItem from "../pages/itens-plano/categoria-item copy";
-import Item from "../pages/itens-plano/categoria-item copy";
+import CategoriaItem from "../pages/itens-plano/categoria-item";
+import Item from "../pages/itens-plano/item";
 
 const RoutesApp = () => (
     <BrowserRouter basename="pax-primavera/configuracoes/cadastro">

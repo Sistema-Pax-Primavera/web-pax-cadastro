@@ -19,6 +19,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ModalEdicao from "../../../components/modal-edicao";
 
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -35,7 +36,8 @@ const funcaoData = [
 
 const Bordero = () => {
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
-
+  const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
+  const [modalCadastroOpen, setModalCadastro] = useState(false);
   const handleStatusChange = (index) => {
     const updatedFuncao = funcaoEstado.map((funcao, i) => {
       if (i === index) {
@@ -48,7 +50,21 @@ const Bordero = () => {
     });
     setFuncaoEstado(updatedFuncao);
   };
+  const handleOpenModalEdicao = () => {
+    setModalEdicaoOpen(true);
+  };
 
+  const handleCloseModalEdicao = () => {
+    setModalEdicaoOpen(false);
+  };
+
+  const abrirModalCadastro = () => {
+    setModalCadastro(true);
+  };
+
+  const fecharModalCadastro = () => {
+    setModalCadastro(false);
+  };
   return (
     <div className="container-cadastro">
       <HeaderCobranca />
@@ -65,11 +81,16 @@ const Bordero = () => {
               fontSizeBotao={'10px'}
             />
           </div>
-          <ModalCadastro
-            buttonText="CADASTRAR"
-            icone2={<ArticleIcon />} // Ícone do Material UI
-            titulo="Cadastrar" // Título do Modal
-            children={
+          <div className="tamanho-botao-pesquisa">
+            <ButtonIconTextoStart
+              title={"Cadastrar"}
+              corFundoBotao={"#006b33"}
+              corTextoBotao={"#ffff"}
+              fontSizeBotao={"10px"}
+              funcao={()=>abrirModalCadastro()}
+            />
+          </div>
+          <ModalEdicao titulo="Cadastrar" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
               <div className="linhas-campos-cadastro">
                 <div className="tipo-bairro-cadas">
                   <label>Nome Borderô</label>
@@ -92,8 +113,31 @@ const Bordero = () => {
                   />
                 </div>
               </div>
-            }
-          ></ModalCadastro>
+            </ModalEdicao>
+            <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
+              <div className="linhas-campos-cadastro">
+                <div className="tipo-bairro-cadas">
+                  <label>Nome Borderô</label>
+                  <input></input>
+                </div>
+                <div className="tipo-bairro-cadas">
+                  <label>Unidade</label>
+                  <select></select>
+                </div>
+                <div className="tipo-bairro-cadas">
+                  <label>Cobradores</label>
+                  <select></select>
+                </div>
+
+                <div className="buttao-salvar-bairro">
+                  <ButtonIconTextoStart
+                    title={"SALVAR"}
+                    corFundoBotao={"#006b33"}
+                    corTextoBotao={"#ffff"}
+                  />
+                </div>
+              </div>
+            </ModalEdicao>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
@@ -124,7 +168,7 @@ const Bordero = () => {
                     <TableCell align="center">
                       <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
-                          <button>
+                        <button onClick={() => handleOpenModalEdicao()}>
                             <ModeEditOutlineIcon fontSize={"small"} />
                           </button>
                         </div>

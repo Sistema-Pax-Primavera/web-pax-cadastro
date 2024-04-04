@@ -18,6 +18,7 @@ import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
+import ModalEdicao from "../../../components/modal-edicao";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -50,6 +51,8 @@ const rows = [
 ];
 
 const Perfil = () => {
+  const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
+  const [modalCadastroOpen, setModalCadastro] = useState(false);
   const [perfisDisponiveis, setPerfisDisponiveis] = useState([
     "Gerente",
     "Vendas",
@@ -106,6 +109,21 @@ const Perfil = () => {
     setSelectedPermissao("");
   };
 
+  const handleOpenModalEdicao = () => {
+    setModalEdicaoOpen(true);
+  };
+
+  const handleCloseModalEdicao = () => {
+    setModalEdicaoOpen(false);
+  };
+
+  const abrirModalCadastro = () => {
+    setModalCadastro(true);
+  };
+
+  const fecharModalCadastro = () => {
+    setModalCadastro(false);
+  };
   return (
     <div className="container-cadastro">
       <HeaderUsuarios />
@@ -122,11 +140,16 @@ const Perfil = () => {
               fontSizeBotao={"10px"}
             />
           </div>
-          <ModalCadastro
-            buttonText="CADASTRAR"
-            icone2={<ArticleIcon />} // Ícone do Material UI
-            titulo="Cadastrar" // Título do Modal
-          >
+          <div className="tamanho-botao-pesquisa">
+            <ButtonIconTextoStart
+              title={"Cadastrar"}
+              corFundoBotao={"#006b33"}
+              corTextoBotao={"#ffff"}
+              fontSizeBotao={"10px"}
+              funcao={()=>abrirModalCadastro()}
+            />
+          </div>
+          <ModalEdicao titulo="Cadastrar" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
             <div className="container-cadastro-linha">
               <div className="container-linha">
                 <div className="campos-01-cadastro">
@@ -255,7 +278,137 @@ const Perfil = () => {
                 </div>
               </div>
             </div>
-          </ModalCadastro>
+            </ModalEdicao>
+            <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
+            <div className="container-cadastro-linha">
+              <div className="container-linha">
+                <div className="campos-01-cadastro">
+                  <label>
+                    Nome<span className="obrigatorio"> *</span>
+                  </label>
+                  <input />
+                </div>
+
+                <div className="campos-02-cadastro">
+                  <label>
+                    CPF<span className="obrigatorio"> *</span>
+                  </label>
+                  <input></input>
+                </div>
+                <div className="campos-03-cadastro">
+                  <label>Email</label>
+                  <input></input>
+                </div>
+              </div>
+              <div className="container-linha">
+                <div className="campos-02-cadastro">
+                  <label>
+                    Senha<span className="obrigatorio"> *</span>
+                  </label>
+                  <input />
+                </div>
+                <div className="campos-04-cadastro">
+                  <label>
+                    Confirmação Senha<span className="obrigatorio"> *</span>
+                  </label>
+                  <input />
+                </div>
+                <div className="campos-03-cadastro">
+                  <label>Unidade</label>
+                  <select></select>
+                </div>
+              </div>
+            </div>
+
+            <div className="container-cadastro-linha3">
+              <h1>
+                <AssignmentTurnedInIcon /> Permissões
+              </h1>
+              <div className="divide-2-cadastro">
+                <div className="colunas2-cadastro">
+                  <div className="container-linha-cadastro">
+                    <div className="campos-05-cadastro">
+                      <label>Selecione o Perfil</label>
+                      <select onChange={handlePerfilChange}>
+                        <option value="">Selecione...</option>
+                        {perfisDisponiveis.map((perfil, index) => (
+                          <option key={index} value={perfil}>
+                            {perfil}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="container-linha-cadastro2">
+                    {perfisSelecionados.map((perfil, index) => (
+                      <div key={index} className="selecione-cadastro2">
+                        <p>{perfil}</p>
+                        <div className="checkbox-icon">
+                          <Checkbox {...label} />
+                          <HighlightOffIcon
+                            onClick={() => handleRemoverPerfil(perfil)}
+                            fontSize={"small"}
+                            color={"error"}
+                            sx={{ cursor: "pointer" }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="colunas2-cadastro">
+                  <div className="container-linha-cadastro">
+                    <div className="campos-05-cadastro">
+                      <label>Selecione a Unidade</label>
+                      <select
+                        value={selectedUnidade}
+                        onChange={(e) => setSelectedUnidade(e.target.value)}
+                      >
+                        <option value="">Selecione...</option>
+                        <option value="Dourados">Dourados</option>
+                        <option value="Rio Brilhante">Rio Brilhante</option>
+                        <option value="Itaporã">Itaporã</option>
+                      </select>
+                    </div>
+                    <div className="permissoe-selecione-cadastro">
+                      <label>Permissões</label>
+                      <select
+                        value={selectedPermissao}
+                        onChange={(e) => setSelectedPermissao(e.target.value)}
+                      >
+                        <option value="">Selecione...</option>
+                        <option value="Controle">Controle</option>
+                        <option value="Venda">Venda</option>
+                        <option value="Associado">Associado</option>
+                      </select>
+                    </div>
+                    <button onClick={handleAddItem}>
+                      <AddCircleOutlineIcon fontSize="small" />
+                    </button>
+                  </div>
+                  <div className="per-uni">
+                    <div className="per-uni3">
+                      {addedItems.map((item, index) => (
+                        <div key={index} className="per-unidade2">
+                          <label>
+                            {item.unidade} - <label>{item.permissao}</label>
+                          </label>
+
+                          <select>
+                            <option>Editar</option>
+                            <option>Remover</option>
+                          </select>
+                          <button onClick={() => handleRemoveItem(index)}>
+                            <HighlightOffIcon fontSize="small" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </ModalEdicao>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
@@ -286,7 +439,7 @@ const Perfil = () => {
                     <TableCell align="center">
                       <div className="div-edit-cadastro">
                         <div className="edit-cadastro-01">
-                          <button>
+                        <button onClick={() => handleOpenModalEdicao()}>
                             <ModeEditOutlineIcon fontSize={"small"} />
                           </button>
                         </div>

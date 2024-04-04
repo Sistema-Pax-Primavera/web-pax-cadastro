@@ -31,6 +31,7 @@ const rows = [
   createData("PR", "Ativo"),
 ];
 
+
 const Estado = () => {
   return (
     <div className="container-cadastro">

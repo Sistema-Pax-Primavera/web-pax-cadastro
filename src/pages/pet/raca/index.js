@@ -36,6 +36,7 @@ const funcaoData = [
 
 const Raca = () => {
   const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
+  const [modalCadastroOpen, setModalCadastro] = useState(false);
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
 
   const handleStatusChange = (index) => {
@@ -59,6 +60,14 @@ const Raca = () => {
     setModalEdicaoOpen(false);
   };
 
+  const abrirModalCadastro = () => {
+    setModalCadastro(true);
+  };
+
+  const fecharModalCadastro = () => {
+    setModalCadastro(false);
+  };
+
   return (
     <div className="container-cadastro">
       <HeaderPet />
@@ -75,7 +84,16 @@ const Raca = () => {
               fontSizeBotao={"10px"}
             />
           </div>
-          <ModalCadastro
+          <div className="tamanho-botao-pesquisa">
+            <ButtonIconTextoStart
+              title={"Cadastrar"}
+              corFundoBotao={"#006b33"}
+              corTextoBotao={"#ffff"}
+              fontSizeBotao={"10px"}
+              funcao={()=>abrirModalCadastro()}
+            />
+          </div>
+          {/* <ModalCadastro
             buttonText="CADASTRAR"
             icone2={<ArticleIcon />} // Ícone do Material UI
             titulo="Cadastrar" // Título do Modal
@@ -99,7 +117,26 @@ const Raca = () => {
               </div>
             }
           >
-          </ModalCadastro>
+          </ModalCadastro> */}
+          <ModalEdicao titulo="Cadastrar" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
+            <div className="linhas-campos-cadastro">
+              <div className="tipo-raca-cadas">
+                <label>Nome da Raça</label>
+                <input></input>
+              </div>
+              <div className="tipo-raca-cadas">
+                <label>Espécie</label>
+                <select></select>
+              </div>
+              <div className="buttao-salvar-raca">
+                <ButtonIconTextoStart
+                  title={"SALVAR"}
+                  corFundoBotao={"#006b33"}
+                  corTextoBotao={"#ffff"}
+                />
+              </div>
+            </div>
+          </ModalEdicao>
           <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
             <div className="linhas-campos-cadastro">
               <div className="tipo-raca-cadas">

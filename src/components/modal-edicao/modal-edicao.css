@@ -15,7 +15,8 @@
     /* Fundo escuro semi-transparente */
 }
 
-.modal-content {
+.modal-content2 {
+    position: relative;
     background-color: #fefefe;
     /* Cor de fundo do modal */
     margin: 15% auto;
@@ -25,7 +26,20 @@
     /* Borda fina ao redor do modal */
     width: 80%;
     /* Largura do modal */
+    background-color: white;
+    padding: 20px;
+    margin-top: 100px;
+    margin-left: 350px;
+    height: auto;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    color: var(--preto);
+    width: 45%;
+    border-radius: 5px;
 }
+
+
 
 .close {
     color: #aaa;
