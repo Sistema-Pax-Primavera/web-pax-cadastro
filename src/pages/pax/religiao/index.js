@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderUsuarios from "../../../componentes/header-usuarios";
+import HeaderUsuarios from "../../../components/header-usuarios";
 import "./religiao.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,9 +16,9 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
-import HeaderPax from "../../../componentes/header-pax";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
+import HeaderPax from "../../../components/header-pax";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -53,8 +53,8 @@ const Religiao = () => {
     <div className="container-cadastro">
       <HeaderPax />
       <div className="sub-container-cadastro">
-      <div className="pesquisa-tabelas-cadastro">
-      <div className="input-pesquisa-cadastro3">
+        <div className="pesquisa-tabelas-cadastro">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">
@@ -65,26 +65,26 @@ const Religiao = () => {
               fontSizeBotao={"10px"}
             />
           </div>
-        <ModalCadastro
-          buttonText="CADASTRAR"
-          icone2={<ArticleIcon fontSize={"small"} />} // Ícone do Material UI
-          titulo="Cadastrar"
-          children={
-            <div className="linhas-campos-cadastro">
-              <div className="tipo-parentesco-cadas">
-                <label>Religião</label>
-                <input></input>
+          <ModalCadastro
+            buttonText="CADASTRAR"
+            icone2={<ArticleIcon fontSize={"small"} />} // Ícone do Material UI
+            titulo="Cadastrar"
+            children={
+              <div className="linhas-campos-cadastro">
+                <div className="tipo-parentesco-cadas">
+                  <label>Religião</label>
+                  <input></input>
+                </div>
+                <div className="buttao-salvar-parentesco">
+                  <ButtonIconTextoStart
+                    title={"SALVAR"}
+                    corFundoBotao={"#006b33"}
+                    corTextoBotao={"#ffff"}
+                  />
+                </div>
               </div>
-              <div className="buttao-salvar-parentesco">
-                <ButtonIconTextoStart
-                  title={"SALVAR"}
-                  corFundoBotao={"#006b33"}
-                  corTextoBotao={"#ffff"}
-                />
-              </div>
-            </div>
-          } // Título do Modal
-        ></ModalCadastro>
+            } // Título do Modal
+          ></ModalCadastro>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>

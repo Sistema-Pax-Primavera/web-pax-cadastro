@@ -12,25 +12,36 @@ const HeaderFinanceiro = ({ idioma }) => {
     // Navegar para a rota específica
     navigate(route);
     // Salvar a rota no localStorage
-    localStorage.setItem("page-venda", route);
+    localStorage.setItem("page-cadastro", route);
     // Atualizar a rota ativa
     setActiveRoute(route);
   };
   const handleVoltar = () => {
-    navigate(-1);
+    navigate('/');
   };
 
+  useEffect(() => {
+    const savedPage = localStorage.getItem("page-cadastro");
+
+    if (savedPage && savedPage !== location.pathname) {
+      localStorage.removeItem("page-cadastro");
+      setActiveRoute("");
+    } else {
+      setActiveRoute(savedPage);
+    }
+  }, [location.pathname]);
+
   return (
-    <div className='navegacao-vendas'>
-            <div className="back-header">
-        <a onClick={handleVoltar}><ArrowBackIosNewIcon fontSize={'small'}/> VOLTAR</a>
+    <div className='navegacao-cadastro-fin'>
+      <div className="back-header">
+        <a onClick={handleVoltar}><ArrowBackIosNewIcon fontSize={'small'} /> VOLTAR</a>
       </div>
       <label>Financeiro</label>
       <button
         onClick={() => handleMenuClick("/financeiro/conta")}
         className={activeRoute === "/financeiro/conta" ? "active" : ""}
       >
-       Conta
+        Conta
       </button>
       <button
         onClick={() => handleMenuClick("/financeiro/forma-pagamento")}
@@ -42,7 +53,7 @@ const HeaderFinanceiro = ({ idioma }) => {
         onClick={() => handleMenuClick("/financeiro/plano-conta")}
         className={activeRoute === "/financeiro/plano-conta" ? "active" : ""}
       >
-       Plano Conta
+        Plano Conta
       </button>
       <button
         onClick={() => handleMenuClick("/financeiro/fornecedor")}
@@ -50,8 +61,8 @@ const HeaderFinanceiro = ({ idioma }) => {
       >
         Fornecedor
       </button>
-      
-      
+
+
     </div>
   );
 };

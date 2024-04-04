@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderCobranca from "../../../componentes/header-cobranca";
+import HeaderCobranca from "../../../components/header-cobranca";
 import "./regiao-bairro.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,20 +16,20 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-function createData(name,  status, opcoes) {
-  return { name,  status, opcoes };
+function createData(name, status, opcoes) {
+  return { name, status, opcoes };
 }
 
 const funcaoData = [
-  createData( "Teste", "Ativo"),
-  createData( "Teste", "Ativo"),
+  createData("Teste", "Ativo"),
+  createData("Teste", "Ativo"),
   createData("Teste", "Ativo"),
 ];
 
@@ -53,8 +53,8 @@ const RegiaoBairro = () => {
     <div className="container-cadastro">
       <HeaderCobranca />
       <div className="sub-container-cadastro">
-      <div className="pesquisa-tabelas-cadastro">
-      <div className="input-pesquisa-cadastro3">
+        <div className="pesquisa-tabelas-cadastro">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">
@@ -65,27 +65,27 @@ const RegiaoBairro = () => {
               fontSizeBotao={'10px'}
             />
           </div>
-        <ModalCadastro
-          buttonText="CADASTRAR"
-          icone2={<ArticleIcon />} // Ícone do Material UI
-          titulo="Cadastrar" // Título do Modal
-          children={
-            <div className="linhas-campos-cadastro">
-              <div className="tipo-bairro-cadas">
-                <label>Região/Bairro</label>
-                <input></input>
+          <ModalCadastro
+            buttonText="CADASTRAR"
+            icone2={<ArticleIcon />} // Ícone do Material UI
+            titulo="Cadastrar" // Título do Modal
+            children={
+              <div className="linhas-campos-cadastro">
+                <div className="tipo-bairro-cadas">
+                  <label>Região/Bairro</label>
+                  <input></input>
+                </div>
+
+                <div className="buttao-salvar-bairro">
+                  <ButtonIconTextoStart
+                    title={"SALVAR"}
+                    corFundoBotao={"#006b33"}
+                    corTextoBotao={"#ffff"}
+                  />
+                </div>
               </div>
-              
-              <div className="buttao-salvar-bairro">
-                <ButtonIconTextoStart
-                  title={"SALVAR"}
-                  corFundoBotao={"#006b33"}
-                  corTextoBotao={"#ffff"}
-                />
-              </div>
-            </div>
-          }
-        ></ModalCadastro>
+            }
+          ></ModalCadastro>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
@@ -108,7 +108,7 @@ const RegiaoBairro = () => {
                     </TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
-                    <div className="div-edit-cadastro-parentesco">
+                      <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
                           <button>
                             <ModeEditOutlineIcon fontSize={"small"} />

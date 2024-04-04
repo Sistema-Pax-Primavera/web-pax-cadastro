@@ -15,9 +15,10 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
-import HeaderPet from "../../../componentes/header-pet";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ModalEdicao from "../../../components/modal-edicao";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
+import HeaderPet from "../../../components/header-pet";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 
@@ -34,6 +35,7 @@ const funcaoData = [
 ];
 
 const Raca = () => {
+  const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
 
   const handleStatusChange = (index) => {
@@ -49,12 +51,20 @@ const Raca = () => {
     setFuncaoEstado(updatedFuncao);
   };
 
+  const handleOpenModalEdicao = () => {
+    setModalEdicaoOpen(true);
+  };
+
+  const handleCloseModalEdicao = () => {
+    setModalEdicaoOpen(false);
+  };
+
   return (
     <div className="container-cadastro">
       <HeaderPet />
       <div className="sub-container-cadastro">
-      <div className="pesquisa-tabelas-cadastro">
-      <div className="input-pesquisa-cadastro3">
+        <div className="pesquisa-tabelas-cadastro">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">
@@ -65,14 +75,35 @@ const Raca = () => {
               fontSizeBotao={"10px"}
             />
           </div>
-        <ModalCadastro
-          buttonText="CADASTRAR"
-          icone2={<ArticleIcon />} // Ícone do Material UI
-          titulo="Cadastrar" // Título do Modal
-          children={
+          <ModalCadastro
+            buttonText="CADASTRAR"
+            icone2={<ArticleIcon />} // Ícone do Material UI
+            titulo="Cadastrar" // Título do Modal
+            children={
+              <div className="linhas-campos-cadastro">
+                <div className="tipo-raca-cadas">
+                  <label>Raça</label>
+                  <input></input>
+                </div>
+                <div className="tipo-raca-cadas">
+                  <label>Espécie</label>
+                  <select></select>
+                </div>
+                <div className="buttao-salvar-raca">
+                  <ButtonIconTextoStart
+                    title={"SALVAR"}
+                    corFundoBotao={"#006b33"}
+                    corTextoBotao={"#ffff"}
+                  />
+                </div>
+              </div>
+            }
+          >
+          </ModalCadastro>
+          <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
             <div className="linhas-campos-cadastro">
               <div className="tipo-raca-cadas">
-                <label>Raça</label>
+                <label>Nome da Raça</label>
                 <input></input>
               </div>
               <div className="tipo-raca-cadas">
@@ -87,8 +118,7 @@ const Raca = () => {
                 />
               </div>
             </div>
-          }
-        ></ModalCadastro>
+          </ModalEdicao>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
@@ -101,7 +131,7 @@ const Raca = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-              {funcaoEstado.map((row, index) => (
+                {funcaoEstado.map((row, index) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -111,11 +141,12 @@ const Raca = () => {
                     </TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
-                    <div className="div-edit-cadastro-parentesco">
+                      <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
-                          <button>
+                          <button onClick={() => handleOpenModalEdicao()}>
                             <ModeEditOutlineIcon fontSize={"small"} />
                           </button>
+
                         </div>
                         <div className="edit-gren-red">
                           <div
@@ -140,6 +171,7 @@ const Raca = () => {
               </TableBody>
             </Table>
           </TableContainer>
+
         </div>
       </div>
     </div>

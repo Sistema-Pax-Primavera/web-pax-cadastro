@@ -1,10 +1,10 @@
 import React from 'react'
 import './atendimento.css'
-import HeaderAtendimento from '../../componentes/header-atendimento'
+import HeaderAtendimento from '../../components/header-atendimento'
 const Atendimento = () => {
   return (
     <div className="container-cadastro">
-      <HeaderAtendimento/>
+      <HeaderAtendimento />
     </div>
   )
 }

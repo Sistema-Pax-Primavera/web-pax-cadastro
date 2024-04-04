@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderUsuarios from "../../../componentes/header-usuarios";
+import HeaderUsuarios from "../../../components/header-usuarios";
 import "./conta.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,9 +16,9 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
-import HeaderFinanceiro from "../../../componentes/header-financeiro";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
+import HeaderFinanceiro from "../../../components/header-financeiro";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -28,8 +28,8 @@ function createData(name, tipo, status, opcoes) {
 }
 
 const funcaoData = [
-  createData("Banco do Brasil", "Conjunta",  "Ativo"),
-  createData("Santander", "Bancária",  "Ativo"),
+  createData("Banco do Brasil", "Conjunta", "Ativo"),
+  createData("Santander", "Bancária", "Ativo"),
   createData("Itaú", "Crédito", "Ativo"),
 ];
 
@@ -53,8 +53,8 @@ const Conta = () => {
     <div className="container-cadastro">
       <HeaderFinanceiro />
       <div className="sub-container-cadastro">
-      <div className="pesquisa-tabelas-cadastro">
-      <div className="input-pesquisa-cadastro3">
+        <div className="pesquisa-tabelas-cadastro">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">
@@ -65,62 +65,62 @@ const Conta = () => {
               fontSizeBotao={'10px'}
             />
           </div>
-        <ModalCadastro
-          buttonText="CADASTRAR"
-          icone2={<ArticleIcon fontSize={"small"} />} // Ícone do Material UI
-          titulo="Cadastrar"
-          children={
-            <div>
-              <div className="linhas-campos-cadastro">
-                <div className="tipo-parentesco-cadas">
-                  <label> Nome Conta</label>
-                  <input></input>
+          <ModalCadastro
+            buttonText="CADASTRAR"
+            icone2={<ArticleIcon fontSize={"small"} />} // Ícone do Material UI
+            titulo="Cadastrar"
+            children={
+              <div>
+                <div className="linhas-campos-cadastro">
+                  <div className="tipo-parentesco-cadas">
+                    <label> Nome Conta</label>
+                    <input></input>
+                  </div>
+                  <div className="tipo-parentesco-cadas">
+                    <label>Unidade</label>
+                    <select></select>
+                  </div>
+                  <div className="tipo-parentesco-cadas">
+                    <label>Banco</label>
+                    <select></select>
+                  </div>
                 </div>
-                <div className="tipo-parentesco-cadas">
-                  <label>Unidade</label>
-                  <select></select>
+                <div className="linhas-campos-cadastro">
+                  <div className="tipo-parentesco-cadas">
+                    <label>Agência</label>
+                    <input></input>
+                  </div>
+                  <div className="tipo-parentesco-cadas">
+                    <label>Dígito Agência</label>
+                    <select></select>
+                  </div>
+                  <div className="tipo-parentesco-cadas">
+                    <label>Conta</label>
+                    <select></select>
+                  </div>
+
                 </div>
-                <div className="tipo-parentesco-cadas">
-                  <label>Banco</label>
-                  <select></select>
+                <div className="linhas-campos-cadastro">
+                  <div className="tipo-parentesco-cadas">
+                    <label>Dígito Conta</label>
+                    <input></input>
+                  </div>
+                  <div className="tipo-parentesco-cadas">
+                    <label>Tipo Conta Bancária</label>
+                    <select></select>
+                  </div>
+
+                  <div className="buttao-salvar-parentesco">
+                    <ButtonIconTextoStart
+                      title={"SALVAR"}
+                      corFundoBotao={"#006b33"}
+                      corTextoBotao={"#ffff"}
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="linhas-campos-cadastro">
-                <div className="tipo-parentesco-cadas">
-                  <label>Agência</label>
-                  <input></input>
-                </div>
-                <div className="tipo-parentesco-cadas">
-                  <label>Dígito Agência</label>
-                  <select></select>
-                </div>
-                <div className="tipo-parentesco-cadas">
-                  <label>Conta</label>
-                  <select></select>
-                </div>
-                
-              </div>
-              <div className="linhas-campos-cadastro">
-                <div className="tipo-parentesco-cadas">
-                  <label>Dígito Conta</label>
-                  <input></input>
-                </div>
-                <div className="tipo-parentesco-cadas">
-                  <label>Tipo Conta Bancária</label>
-                  <select></select>
-                </div>
-                
-                <div className="buttao-salvar-parentesco">
-                  <ButtonIconTextoStart
-                    title={"SALVAR"}
-                    corFundoBotao={"#006b33"}
-                    corTextoBotao={"#ffff"}
-                  />
-                </div>
-              </div>
-            </div>
-          } // Título do Modal
-        ></ModalCadastro>
+            } // Título do Modal
+          ></ModalCadastro>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
@@ -145,7 +145,7 @@ const Conta = () => {
                     <TableCell align="center">{row.tipo}</TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
-                    <div className="div-edit-cadastro-parentesco">
+                      <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
                           <button>
                             <ModeEditOutlineIcon fontSize={"small"} />

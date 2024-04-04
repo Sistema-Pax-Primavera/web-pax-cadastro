@@ -1,0 +1,51 @@
+/* modal-edicao/modal-edicao.css */
+
+.modal {
+    display: none;
+    /* Inicia oculto por padrão */
+    position: fixed;
+    z-index: 1000;
+    /* Garante que o modal esteja na frente de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fundo escuro semi-transparente */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    /* Cor de fundo do modal */
+    margin: 15% auto;
+    /* Centraliza verticalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    /* Borda fina ao redor do modal */
+    width: 80%;
+    /* Largura do modal */
+}
+
+.close {
+    color: #aaa;
+    /* Cor do ícone de fechar */
+    float: right;
+    /* Alinha o ícone de fechar à direita */
+    font-size: 28px;
+    /* Tamanho do ícone de fechar */
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    /* Cor do ícone de fechar ao passar o mouse ou focar */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.open {
+    display: block;
+    /* Exibe o modal quando a classe "open" é aplicada */
+}

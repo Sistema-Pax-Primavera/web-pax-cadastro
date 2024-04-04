@@ -1,10 +1,10 @@
 import React from 'react'
-import HeaderCobranca from '../../componentes/header-cobranca'
+import HeaderCobranca from '../../components/header-cobranca'
 
 const Cobranca = () => {
   return (
     <div className="container-cadastro">
-      <HeaderCobranca/>
+      <HeaderCobranca />
     </div>
   )
 }

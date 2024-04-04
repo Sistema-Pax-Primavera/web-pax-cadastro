@@ -15,10 +15,10 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
-import HeaderPet from "../../../componentes/header-pet";
-import HeaderAtendimento from "../../../componentes/header-atendimento";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
+import HeaderPet from "../../../components/header-pet";
+import HeaderAtendimento from "../../../components/header-atendimento";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };

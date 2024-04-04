@@ -13,19 +13,30 @@ const HeaderAtendimento = ({ idioma }) => {
     // Navegar para a rota específica
     navigate(route);
     // Salvar a rota no localStorage
-    localStorage.setItem("page-venda", route);
+    localStorage.setItem("page-cadastro", route);
     // Atualizar a rota ativa
     setActiveRoute(route);
   };
 
   const handleVoltar = () => {
-    navigate(-1);
+    navigate('/');
   };
 
+  useEffect(() => {
+    const savedPage = localStorage.getItem("page-cadastro");
+
+    if (savedPage && savedPage !== location.pathname) {
+      localStorage.removeItem("page-cadastro");
+      setActiveRoute("");
+    } else {
+      setActiveRoute(savedPage);
+    }
+  }, [location.pathname]);
+
   return (
-    <div className="navegacao-vendas">
+    <div className="navegacao-cadastro-at">
       <div className="back-header">
-        <a onClick={handleVoltar}><ArrowBackIosNewIcon fontSize={'small'}/> VOLTAR</a>
+        <a onClick={handleVoltar}><ArrowBackIosNewIcon fontSize={'small'} /> VOLTAR</a>
       </div>
       <label>Atendimento</label>
       <button
@@ -34,7 +45,7 @@ const HeaderAtendimento = ({ idioma }) => {
           activeRoute === "/atendimento/tipo-atendimento" ? "active" : ""
         }
       >
-        Tipo Atendmento
+        Tipo Atendimento
       </button>
       <button
         onClick={() => handleMenuClick("/atendimento/tipo-sub-atendimento")}

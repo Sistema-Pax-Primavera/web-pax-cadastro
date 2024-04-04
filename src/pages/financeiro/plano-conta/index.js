@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderUsuarios from "../../../componentes/header-usuarios";
+import HeaderUsuarios from "../../../components/header-usuarios";
 import "./plano-conta.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,16 +16,16 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
-import HeaderPax from "../../../componentes/header-pax";
-import HeaderFinanceiro from "../../../componentes/header-financeiro";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
+import HeaderPax from "../../../components/header-pax";
+import HeaderFinanceiro from "../../../components/header-financeiro";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-function createData(name, codigo, tipo, nivel, visivel, status,  ) {
-  return { name, codigo, tipo, nivel, visivel, status,  };
+function createData(name, codigo, tipo, nivel, visivel, status,) {
+  return { name, codigo, tipo, nivel, visivel, status, };
 }
 
 const funcaoData = [
@@ -54,8 +54,8 @@ const PlanoConta = () => {
     <div className="container-cadastro">
       <HeaderFinanceiro />
       <div className="sub-container-cadastro">
-      <div className="pesquisa-tabelas-cadastro">
-      <div className="input-pesquisa-cadastro3">
+        <div className="pesquisa-tabelas-cadastro">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">
@@ -66,46 +66,46 @@ const PlanoConta = () => {
               fontSizeBotao={'10px'}
             />
           </div>
-        <ModalCadastro
-          buttonText="CADASTRAR"
-          icone2={<ArticleIcon fontSize={"small"} />} // Ícone do Material UI
-          titulo="Cadastrar"
-          children={
-            <div>
-              <div className="linhas-campos-cadastro">
-                <div className="tipo-parentesco-cadas">
-                  <label>Nome</label>
-                  <input></input>
+          <ModalCadastro
+            buttonText="CADASTRAR"
+            icone2={<ArticleIcon fontSize={"small"} />} // Ícone do Material UI
+            titulo="Cadastrar"
+            children={
+              <div>
+                <div className="linhas-campos-cadastro">
+                  <div className="tipo-parentesco-cadas">
+                    <label>Nome</label>
+                    <input></input>
+                  </div>
+                  <div className="tipo-parentesco-cadas">
+                    <label>Código</label>
+                    <input></input>
+                  </div>
+                  <div className="tipo-parentesco-cadas">
+                    <label>Plano Raiz</label>
+                    <select></select>
+                  </div>
                 </div>
-                <div className="tipo-parentesco-cadas">
-                  <label>Código</label>
-                  <input></input>
+                <div className="linhas-campos-cadastro">
+                  <div className="tipo-parentesco-cadas">
+                    <label>Vísivel</label>
+                    <select></select>
+                  </div>
+                  <div className="tipo-parentesco-cadas">
+                    <label>Tipo</label>
+                    <input></input>
+                  </div>
+
+                  <ButtonIconTextoStart
+                    title={"SALVAR"}
+                    corFundoBotao={"#006b33"}
+                    corTextoBotao={"#ffff"}
+                  />
                 </div>
-                <div className="tipo-parentesco-cadas">
-                  <label>Plano Raiz</label>
-                  <select></select>
-                </div>
+                <div className="buttao-salvar-parentesco"></div>
               </div>
-              <div className="linhas-campos-cadastro">
-              <div className="tipo-parentesco-cadas">
-                  <label>Vísivel</label>
-                  <select></select>
-                </div>
-                <div className="tipo-parentesco-cadas">
-                  <label>Tipo</label>
-                  <input></input>
-                </div>
-                
-                <ButtonIconTextoStart
-                  title={"SALVAR"}
-                  corFundoBotao={"#006b33"}
-                  corTextoBotao={"#ffff"}
-                />
-              </div>
-              <div className="buttao-salvar-parentesco"></div>
-            </div>
-          } // Título do Modal
-        ></ModalCadastro>
+            } // Título do Modal
+          ></ModalCadastro>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
@@ -121,7 +121,7 @@ const PlanoConta = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-               {funcaoEstado.map((row, index) => (
+                {funcaoEstado.map((row, index) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -134,7 +134,7 @@ const PlanoConta = () => {
                     <TableCell align="center">{row.nivel}</TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
-                    <div className="div-edit-cadastro-parentesco">
+                      <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
                           <button>
                             <ModeEditOutlineIcon fontSize={"small"} />

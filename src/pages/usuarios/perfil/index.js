@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderUsuarios from "../../../componentes/header-usuarios/index";
+import HeaderUsuarios from "../../../components/header-usuarios/index";
 import "./perfil.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,13 +11,13 @@ import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { CSSTransition } from "react-transition-group";
-import ModalCadastro from "../../../componentes/modal-cadastro";
+import ModalCadastro from "../../../components/modal-cadastro";
 import ArticleIcon from "@mui/icons-material/Article";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -111,7 +111,7 @@ const Perfil = () => {
       <HeaderUsuarios />
       <div className="sub-container-cadastro">
         <div className="pesquisa-tabelas-cadastro">
-        <div className="input-pesquisa-cadastro3">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">
@@ -267,7 +267,7 @@ const Perfil = () => {
                   <TableCell align="center">CPF</TableCell>
                   <TableCell align="center">RG</TableCell>
                   <TableCell align="center">Status</TableCell>
-                  <TableCell align="center">OPÇÕES</TableCell>  
+                  <TableCell align="center">OPÇÕES</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

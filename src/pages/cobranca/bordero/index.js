@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderCobranca from "../../../componentes/header-cobranca";
+import HeaderCobranca from "../../../components/header-cobranca";
 import "./bordero.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,8 +16,8 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 
@@ -28,9 +28,9 @@ function createData(name, regiao, unidade, usuario, status, opcoes) {
 }
 
 const funcaoData = [
-  createData( "Teste", "Região 01", "Dourados", "Carlos", "Ativo"),
-  createData( "Teste", "Região 02", "Dourados", "Luiz", "Ativo"),
-  createData( "Teste", "Região 03", "Itaporã", "Luiz", "Ativo"),
+  createData("Teste", "Região 01", "Dourados", "Carlos", "Ativo"),
+  createData("Teste", "Região 02", "Dourados", "Luiz", "Ativo"),
+  createData("Teste", "Região 03", "Itaporã", "Luiz", "Ativo"),
 ];
 
 const Bordero = () => {
@@ -48,13 +48,13 @@ const Bordero = () => {
     });
     setFuncaoEstado(updatedFuncao);
   };
-  
+
   return (
     <div className="container-cadastro">
       <HeaderCobranca />
       <div className="sub-container-cadastro">
-      <div className="pesquisa-tabelas-cadastro">
-      <div className="input-pesquisa-cadastro3">
+        <div className="pesquisa-tabelas-cadastro">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">
@@ -65,35 +65,35 @@ const Bordero = () => {
               fontSizeBotao={'10px'}
             />
           </div>
-        <ModalCadastro
-          buttonText="CADASTRAR"
-          icone2={<ArticleIcon />} // Ícone do Material UI
-          titulo="Cadastrar" // Título do Modal
-          children={
-            <div className="linhas-campos-cadastro">
-              <div className="tipo-bairro-cadas">
-                <label>Nome Borderô</label>
-                <input></input>
+          <ModalCadastro
+            buttonText="CADASTRAR"
+            icone2={<ArticleIcon />} // Ícone do Material UI
+            titulo="Cadastrar" // Título do Modal
+            children={
+              <div className="linhas-campos-cadastro">
+                <div className="tipo-bairro-cadas">
+                  <label>Nome Borderô</label>
+                  <input></input>
+                </div>
+                <div className="tipo-bairro-cadas">
+                  <label>Unidade</label>
+                  <select></select>
+                </div>
+                <div className="tipo-bairro-cadas">
+                  <label>Cobradores</label>
+                  <select></select>
+                </div>
+
+                <div className="buttao-salvar-bairro">
+                  <ButtonIconTextoStart
+                    title={"SALVAR"}
+                    corFundoBotao={"#006b33"}
+                    corTextoBotao={"#ffff"}
+                  />
+                </div>
               </div>
-              <div className="tipo-bairro-cadas">
-                <label>Unidade</label>
-                <select></select>
-              </div>
-              <div className="tipo-bairro-cadas">
-                <label>Cobradores</label>
-                <select></select>
-              </div>
-              
-              <div className="buttao-salvar-bairro">
-                <ButtonIconTextoStart
-                  title={"SALVAR"}
-                  corFundoBotao={"#006b33"}
-                  corTextoBotao={"#ffff"}
-                />
-              </div>
-            </div>
-          }
-        ></ModalCadastro>
+            }
+          ></ModalCadastro>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
@@ -109,7 +109,7 @@ const Bordero = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-              {funcaoEstado.map((row, index) => (
+                {funcaoEstado.map((row, index) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -122,7 +122,7 @@ const Bordero = () => {
                     <TableCell align="center">{row.usuario}</TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
-                    <div className="div-edit-cadastro-parentesco">
+                      <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
                           <button>
                             <ModeEditOutlineIcon fontSize={"small"} />

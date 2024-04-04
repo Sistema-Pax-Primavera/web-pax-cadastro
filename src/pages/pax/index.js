@@ -1,10 +1,10 @@
 import React from 'react'
 import './pax.css'
-import HeaderPax from '../../componentes/header-pax'
+import HeaderPax from '../../components/header-pax'
 const Pax = () => {
   return (
     <div className="container-cadastro">
-      <HeaderPax/>
+      <HeaderPax />
     </div>
   )
 }

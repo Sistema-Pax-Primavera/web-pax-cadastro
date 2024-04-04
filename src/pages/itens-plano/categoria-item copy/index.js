@@ -15,11 +15,11 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
-import HeaderPet from "../../../componentes/header-pet";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
+import HeaderPet from "../../../components/header-pet";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import HeaderItem from "../../../componentes/header-item";
+import HeaderItem from "../../../components/header-item";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -54,7 +54,7 @@ const Item = () => {
       <HeaderItem />
       <div className="sub-container-cadastro">
         <div className="pesquisa-tabelas-cadastro">
-        <div className="input-pesquisa-cadastro3">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">

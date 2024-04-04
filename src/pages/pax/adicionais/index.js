@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderUsuarios from "../../../componentes/header-usuarios";
+import HeaderUsuarios from "../../../components/header-usuarios";
 import "./adicionais.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,9 +16,9 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
-import HeaderPax from "../../../componentes/header-pax";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
+import HeaderPax from "../../../components/header-pax";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 
@@ -52,10 +52,10 @@ const Adicionais = () => {
 
   return (
     <div className="container-cadastro">
-      <HeaderPax/>
+      <HeaderPax />
       <div className="sub-container-cadastro">
-      <div className="pesquisa-tabelas-cadastro">
-      <div className="input-pesquisa-cadastro3">
+        <div className="pesquisa-tabelas-cadastro">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">
@@ -66,34 +66,34 @@ const Adicionais = () => {
               fontSizeBotao={"10px"}
             />
           </div>
-        <ModalCadastro
-          buttonText="CADASTRAR"
-          icone2={<ArticleIcon fontSize={'small'}/>} // Ícone do Material UI
-          titulo="Cadastrar"
-          children={
-            <div className="linhas-campos-cadastro">
-              <div className="tipo-parentesco-cadas">
-                <label>Nome</label>
-                <input></input>
+          <ModalCadastro
+            buttonText="CADASTRAR"
+            icone2={<ArticleIcon fontSize={'small'} />} // Ícone do Material UI
+            titulo="Cadastrar"
+            children={
+              <div className="linhas-campos-cadastro">
+                <div className="tipo-parentesco-cadas">
+                  <label>Nome</label>
+                  <input></input>
+                </div>
+                <div className="tipo-parentesco-cadas">
+                  <label>Porte</label>
+                  <input></input>
+                </div>
+                <div className="tipo-parentesco-cadas">
+                  <label>Tipo</label>
+                  <select></select>
+                </div>
+                <div className="buttao-salvar-parentesco">
+                  <ButtonIconTextoStart
+                    title={"SALVAR"}
+                    corFundoBotao={"#006b33"}
+                    corTextoBotao={"#ffff"}
+                  />
+                </div>
               </div>
-              <div className="tipo-parentesco-cadas">
-                <label>Porte</label>
-                <input></input>
-              </div>
-              <div className="tipo-parentesco-cadas">
-                <label>Tipo</label>
-                <select></select>
-              </div>
-              <div className="buttao-salvar-parentesco">
-                <ButtonIconTextoStart
-                  title={"SALVAR"}
-                  corFundoBotao={"#006b33"}
-                  corTextoBotao={"#ffff"}
-                />
-              </div>
-            </div>
-          } // Título do Modal
-        ></ModalCadastro>
+            } // Título do Modal
+          ></ModalCadastro>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
@@ -120,7 +120,7 @@ const Adicionais = () => {
                     <TableCell align="center">{row.tipo}</TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
-                    <div className="div-edit-cadastro-parentesco">
+                      <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
                           <button>
                             <ModeEditOutlineIcon fontSize={"small"} />

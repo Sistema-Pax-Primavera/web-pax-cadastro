@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderCobranca from "../../../componentes/header-cobranca";
+import HeaderCobranca from "../../../components/header-cobranca";
 import "./bairro.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,8 +16,8 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../componentes/modal-cadastro";
-import ButtonIconTextoStart from "../../../componentes/button-icon-texto-start";
+import ModalCadastro from "../../../components/modal-cadastro";
+import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -53,7 +53,7 @@ const Bairro = () => {
       <HeaderCobranca />
       <div className="sub-container-cadastro">
         <div className="pesquisa-tabelas-cadastro">
-        <div className="input-pesquisa-cadastro3">
+          <div className="input-pesquisa-cadastro3">
             <input placeholder="Informe o nome"></input>
           </div>
           <div className="tamanho-botao-pesquisa">

@@ -42,7 +42,7 @@ import CategoriaItem from "../pages/itens-plano/categoria-item copy";
 import Item from "../pages/itens-plano/categoria-item copy";
 
 const RoutesApp = () => (
-    <BrowserRouter basename="pax-primavera/configuracoes">
+    <BrowserRouter basename="pax-primavera/configuracoes/cadastro">
         <Routes>
             <Route exact path="*" element={<Cadastro />} />
             <Route exact path="/usuarios" element={<Usuarios />} />
@@ -57,9 +57,9 @@ const RoutesApp = () => (
 
             <Route exact path="/cobranca/rota" element={<Rota />} />
             <Route exact path="/cobranca/bairro" element={<Bairro />} />
-            <Route exact path="/cobranca/regiao-bairro" element={<RegiaoBairro/>} />
-            <Route exact path="/cobranca/municipio" element={<Municipio/>} />
-            <Route exact path="/cobranca/bordero" element={<Bordero/>} />
+            <Route exact path="/cobranca/regiao-bairro" element={<RegiaoBairro />} />
+            <Route exact path="/cobranca/municipio" element={<Municipio />} />
+            <Route exact path="/cobranca/bordero" element={<Bordero />} />
 
             <Route exact path="/pet/raca" element={<Raca />} />
             <Route exact path="/pet/especie" element={<Especie />} />
@@ -69,24 +69,24 @@ const RoutesApp = () => (
 
             <Route exact path="/pax" element={<Pax />} />
             <Route exact path="/pax/planos" element={<Planos />} />
-            <Route exact path="/pax/adicionais" element={<Adicionais/>} />
-            <Route exact path="/pax/parentesco" element={<Parentesco/>} />
-            <Route exact path="/pax/religiao" element={<Religiao/>} />
+            <Route exact path="/pax/adicionais" element={<Adicionais />} />
+            <Route exact path="/pax/parentesco" element={<Parentesco />} />
+            <Route exact path="/pax/religiao" element={<Religiao />} />
             <Route exact path="/pax/estado-civil" element={<EstadoCivil />} />
-            <Route exact path="/pax/concorrencia" element={<Concorrencia/>} />
-            <Route exact path="/pax/categoria" element={<Categoria/>} />
-            <Route exact path="/pax/sub-categoria" element={<SubCategoria/>} />
-            <Route exact path="/pax/situacao" element={<Situacao/>} />
-            <Route exact path="/pax/templates" element={<Templates/>} />
-            <Route exact path="/pax/profissao" element={<Profissao/>} />
-            <Route exact path="/pax/crm-vendas" element={<CrmVendas/>} />
-            <Route exact path="/pax/crm-cancelamento" element={<CrmCancelamento/>} />
+            <Route exact path="/pax/concorrencia" element={<Concorrencia />} />
+            <Route exact path="/pax/categoria" element={<Categoria />} />
+            <Route exact path="/pax/sub-categoria" element={<SubCategoria />} />
+            <Route exact path="/pax/situacao" element={<Situacao />} />
+            <Route exact path="/pax/templates" element={<Templates />} />
+            <Route exact path="/pax/profissao" element={<Profissao />} />
+            <Route exact path="/pax/crm-vendas" element={<CrmVendas />} />
+            <Route exact path="/pax/crm-cancelamento" element={<CrmCancelamento />} />
 
             <Route exact path="/financeiro" element={<Financeiro />} />
             <Route exact path="/financeiro/conta" element={<Conta />} />
             <Route exact path="/financeiro/forma-pagamento" element={<FormaPagamento />} />
-            <Route exact path="/financeiro/plano-conta" element={<PlanoConta/>} />
-            <Route exact path="/financeiro/fornecedor" element={<Fornecedor/>} />
+            <Route exact path="/financeiro/plano-conta" element={<PlanoConta />} />
+            <Route exact path="/financeiro/fornecedor" element={<Fornecedor />} />
 
             <Route exact path="/item" element={<ItensPlano />} />
             <Route exact path="/item/categoria-item" element={<CategoriaItem />} />
