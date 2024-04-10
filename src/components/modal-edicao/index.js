@@ -14,7 +14,6 @@ const ModalEdicao = ({ isOpen, onClose, titulo, children }) => {
                         <HighlightOffIcon fontSize={"medium"} />
                     </button>
                 </div>
-                {/* <span className="close" onClick={onClose}>&times;</span> */}
                 {children}
             </div>
         </div>
