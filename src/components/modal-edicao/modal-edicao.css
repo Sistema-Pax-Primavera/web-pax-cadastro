@@ -25,6 +25,7 @@
     margin-bottom: 100px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
     color: var(--preto);
     width: 45%;
     border-radius: 5px;

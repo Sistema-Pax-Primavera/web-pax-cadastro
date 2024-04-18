@@ -28,15 +28,46 @@ function createData(name, status, opcoes) {
 }
 
 const funcaoData = [
-  createData("Buldog", "Ativo"),
-  createData("Pintcher", "Ativo"),
-  createData("Labrador", "Ativo"),
+  createData("Administrador", "Ativo"),
+  createData("Suporte", "Ativo"),
+  createData("Controladoria", "Ativo"),
 ];
 
 const Funcao = () => {
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
   const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
   const [modalCadastroOpen, setModalCadastro] = useState(false);
+  const [permissaoSelecionada, setPermissaoSelecionada] = useState("");
+  const [permissoesAdicionadas, setPermissoesAdicionadas] = useState([]);
+  const opcoes = ["Associados"];
+  const [selectedOption, setSelectedOption] = useState("");
+  const [displayedOptions, setDisplayedOptions] = useState([]);
+
+  const options = ["Dados Cadastrais", "Dados Cobrança", "Dependentes", "PDR"];
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setDisplayedOptions([...displayedOptions, option]);
+  };
+
+  const handleRemoveOption = (option) => {
+    const updatedOptions = displayedOptions.filter((item) => item !== option);
+    setDisplayedOptions(updatedOptions);
+    setSelectedOption("");
+  };
+
+  const handleAdicionar = () => {
+    if (permissaoSelecionada) {
+      setPermissoesAdicionadas([
+        ...permissoesAdicionadas,
+        permissaoSelecionada,
+      ]);
+      setPermissaoSelecionada(""); // Limpar a seleção após adicionar
+    }
+  };
+
+  const handleSalvar = () => {};
+
   const handleStatusChange = (index) => {
     const updatedFuncao = funcaoEstado.map((funcao, i) => {
       if (i === index) {
@@ -96,12 +127,30 @@ const Funcao = () => {
           >
             <div className="linhas-campos-cadastro">
               <div className="tipo-raca-cadas">
-                <label>Raça</label>
+                <label>Função</label>
                 <input></input>
               </div>
               <div className="tipo-raca-cadas">
-                <label>Espécie</label>
-                <select></select>
+                <label>Permissão</label>
+                <select
+                  value={permissaoSelecionada}
+                  onChange={(e) => setPermissaoSelecionada(e.target.value)}
+                >
+                  <option value="">Selecione uma permissão</option>
+                  {opcoes.map((opcao, index) => (
+                    <option key={index} value={opcao}>
+                      {opcao}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="buttao-salvar-raca">
+                <ButtonIconTextoStart
+                  title={"ADICIONAR"}
+                  corFundoBotao={"#006b33"}
+                  corTextoBotao={"#ffff"}
+                  funcao={handleAdicionar}
+                />
               </div>
               <div className="buttao-salvar-raca">
                 <ButtonIconTextoStart
@@ -110,6 +159,42 @@ const Funcao = () => {
                   corTextoBotao={"#ffff"}
                 />
               </div>
+            </div>
+            <div className="linhas-campos-cadastro2">
+              {permissoesAdicionadas.length > 0 && (
+                <div className="colunas-permissoes">
+                  {permissoesAdicionadas.map((permissao, index) => (
+                    <div key={index} className="permissao-adicionada-associado">
+                      <label>{permissao}</label>
+                      <select
+                        value={selectedOption}
+                        onChange={(e) => handleOptionSelect(e.target.value)}
+                      >
+                        <option value="">Selecione uma opção</option>
+                        {options.map((option) => (
+                          <option
+                            key={option}
+                            value={option}
+                            disabled={displayedOptions.includes(option)}
+                          >
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                      <div>
+                        {displayedOptions.map((option) => (
+                          <div key={option} className="opcoes-associado-cadastro">
+                            <label>{option}</label>
+                            <button onClick={() => handleRemoveOption(option)}>
+                              <HighlightOffIcon fontSize={'small'}/>
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </ModalEdicao>
           <ModalEdicao
@@ -159,7 +244,7 @@ const Funcao = () => {
                     <TableCell align="center">
                       <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
-                        <button onClick={() => handleOpenModalEdicao()}>
+                          <button onClick={() => handleOpenModalEdicao()}>
                             <ModeEditOutlineIcon fontSize={"small"} />
                           </button>
                         </div>

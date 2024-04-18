@@ -1,34 +1,93 @@
-.tipo-raca-cadas{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
+.tipo-raca-cadas {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
 }
 
-.tipo-raca-cadas label{
-    font-size: 12px;
-    color: black;
-    font-weight: 500;
+.tipo-raca-cadas label {
+  font-size: 12px;
+  color: black;
+  font-weight: 500;
 }
 
-.tipo-raca-cadas select{
-    background-color: var(--cinza-leve);
-    font-weight: 500;
+.tipo-raca-cadas select {
+  background-color: var(--cinza-leve);
+  font-weight: 500;
 }
 
-.tipo-raca-cadas input{
-    background-color: var(--cinza-leve);
-    font-weight: 500;
+.tipo-raca-cadas input {
+  background-color: var(--cinza-leve);
+  font-weight: 500;
 }
 
-.buttao-salvar-raca{
-    margin-top: 15px;
-    background-color: var(--verde);
-    border-radius: 10px;
-    width: 20%;
+.buttao-salvar-raca {
+  margin-top: 15px;
+  background-color: var(--verde);
+  border-radius: 10px;
+  width: 20%;
 }
 
-.pesquisa-tabelas-cadastro{
+.pesquisa-tabelas-cadastro {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 80%;
+}
+
+.permissao-adicionada-associado {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  padding: 10px;
+  border: 1px solid var(--verde);
+  border-radius: 5px;
+}
+
+.permissao-adicionada-associado label {
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--verde);
+}
+
+.permissao-adicionada-associado select {
+  background-color: var(--cinza-leve);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.linhas-campos-cadastro2 {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.colunas-permissoes {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 5px;
+}
+
+.opcoes-associado-cadastro{ 
     display: flex;
     align-items: center;
-    gap: 5px;
+    width: 100%;
+    gap: 10px;
+}
+
+.opcoes-associado-cadastro label{
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--preto);
+    width: 90%;
+}
+
+.opcoes-associado-cadastro button{
+    width: 10%;
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: var(--branco);
+    color: var(--vermelho);
 }

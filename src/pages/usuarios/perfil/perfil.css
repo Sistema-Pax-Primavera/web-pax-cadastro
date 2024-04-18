@@ -24,20 +24,21 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  gap: 5px;
 }
 
 .edit-cadastro-01 {
   width: 45%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
 }
 
 .edit-cadastro-02 {
   width: 45%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 }
 
 .edit-cadastro-01 button {
@@ -104,6 +105,11 @@
   width: 50%;
 }
 
+.campos-01-cadastro label{
+  font-weight: 500;
+  font-size: 12px;
+}
+
 .campos-01-cadastro input {
   font-weight: 500;
   background-color: var(--cinza-leve);
@@ -120,6 +126,11 @@
   width: 17%;
 }
 
+.campos-02-cadastro label{
+  font-size: 12px;
+  font-weight: 500;
+}
+
 .campos-02-cadastro input {
   font-weight: 500;
   background-color: var(--cinza-leve);
@@ -129,6 +140,11 @@
   display: flex;
   flex-direction: column;
   width: 30%;
+}
+
+.campos-03-cadastro label{
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .campos-04-cadastro input {
@@ -156,12 +172,17 @@
 .campos-05-cadastro {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
 }
 
 .campos-05-cadastro p{
-  font-weight: 700;
+  font-weight: 500;
   font-size: 15px;
+}
+
+.campos-05-cadastro label{
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .selecione-cadastro{
@@ -178,10 +199,10 @@
 .selecione-cadastro2{
   display: flex;
   align-items: center;
-  width: 100%;
   background-color: var(--cinza-leve);
-  border-radius: 5px;
   padding: 10px;
+  width: 100%;
+  border-radius: 5px;
   height: 15px;
 }
 
@@ -220,11 +241,12 @@
 
 .selecione-cadastro2 p{
   width:20%;
+  font-weight: 500;
 }
 
 .selecione-cadastro2 p{
   color: black;
-  font-weight: 600;
+  font-weight: 500;
   width: 50%;
   font-size: 13px;
 }
@@ -242,8 +264,9 @@
   align-items: center;
   flex-direction: column;
   padding: 10px;
+  border-radius: 10px;
   gap: 5px;
-  width: 95%;
+  width: 92%;
 }
 
 .container-linha-cadastro button{
@@ -299,6 +322,10 @@
   flex-direction: column;
 }
 
+.permissoe-selecione-cadastro label{
+  font-weight: 500;
+}
+
 .permissoe-selecione-cadastro select{
   background-color: var(--cinza-leve);
   font-weight: 500;
@@ -334,18 +361,45 @@
   width: 100%;
 }
 
+.container-cadastro-linha4{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: end;
+  justify-content: end;
+  width: 100%;
+}
+
+.container-cadastro-linha3{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
 .container-cadastro-linha3 h1{
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 15px;
+  font-weight: 700;
+  color: var(--verde);
+  font-size: 13px;
 }
 
 .colunas2-cadastro{
   display: flex;
   flex-direction: column;
-  gap: 5px;
   width: 40%;
+  padding: 10px;
+  border: 1px solid var(--verde);
+  border-radius: 5px;
+}
+
+.colunas4-cadastro{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 60%;
   padding: 10px;
   border: 1px solid var(--verde);
   border-radius: 5px;
@@ -366,32 +420,34 @@
 
 .per-unidade2{
   background-color: var(--cinza-leve);
-  padding: 10px;
+  padding: 5px;
   color: var(--preto);
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   align-items: center; gap: 5px;
 }
 
 .per-unidade2 select{
   font-weight: 500;
+  padding: 5px;
   margin-right: 50px;
 }
 
 .per-unidade2 button{
-  background-color: var(--vermelho);
   padding: 5px;
   border-radius: 50px;
   display: flex;
+  background-color: var(--cinza-leve);
+  color: var(--vermelho);
   align-items: center;
-  width: 10%;
+  width: 8%;
 }
 
 .per-unidade2 label{
-  font-weight: 700;
   color: var(--preto);
-  font-weight: 700;
+  font-weight: 500;
   width: 50%;
+  font-size: 12px;
 }
 
 .per-uni3{
@@ -399,4 +455,26 @@
   display: flex;
   gap: 5px;
   flex-direction: column;
+}
+
+.acessos-cadastro{
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--verde);
+  border-radius: 5px;
+  width: 23%;
+}
+
+.acessos-cadastro label{
+  display: flex;
+  align-items: center;
+  color: var(--preto);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.salva-perfil-cadastro {
+  width: 25%;
+  background-color: var(--verde);
+  border-radius: 10px;
 }
