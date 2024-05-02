@@ -27,7 +27,6 @@ import Situacao from "../pages/pax/situacao";
 import Templates from "../pages/pax/templates";
 import Profissao from '../pages/pax/profissao'
 import CrmVendas from "../pages/pax/crm-vendas";
-import CrmCancelamento from "../pages/pax/crm-cancelamento";
 import Pax from "../pages/pax";
 import ItensPlano from "../pages/itens-plano";
 import Financeiro from "../pages/financeiro";
@@ -40,6 +39,19 @@ import Permissao from "../pages/usuarios/permissao";
 import Setor from "../pages/usuarios/setor";
 import CategoriaItem from "../pages/itens-plano/categoria-item";
 import Item from "../pages/itens-plano/item";
+import Filtro from "../pages/pax/crm-vendas/filtro";
+import Colunas from "../pages/pax/crm-vendas/colunas";
+import Grupo from "../pages/pax/crm-vendas/grupo";
+import Indicados from "../pages/pax/crm-vendas/indicados";
+import Atividades from "../pages/pax/crm-vendas/atividades";
+import Etiquetas from "../pages/pax/crm-vendas/etiquetas";
+import OrigemLead from "../pages/pax/crm-vendas/origem-lead";
+import CategoriaAgendamentos from "../pages/pax/crm-vendas/categoria-agendamentos";
+import Justificativa from "../pages/pax/crm-vendas/justificativa";
+import Gatilhos from "../pages/pax/crm-vendas/gatilhos";
+import InteressesCLiente from "../pages/pax/crm-vendas/interesses-cliente";
+import Banco from "../pages/financeiro/banco";
+import UnidadeFinanceira from "../pages/financeiro/unidade-financeira";
 
 const RoutesApp = () => (
     <BrowserRouter basename="pax-primavera/configuracoes/cadastro">
@@ -80,17 +92,32 @@ const RoutesApp = () => (
             <Route exact path="/pax/templates" element={<Templates />} />
             <Route exact path="/pax/profissao" element={<Profissao />} />
             <Route exact path="/pax/crm-vendas" element={<CrmVendas />} />
-            <Route exact path="/pax/crm-cancelamento" element={<CrmCancelamento />} />
+
+            <Route exact path="/crm-vendas/filtro" element={<Filtro />} />
+            <Route exact path="/crm-vendas/colunas" element={<Colunas />} />
+            <Route exact path="/crm-vendas/grupo" element={<Grupo />} />
+            <Route exact path="/crm-vendas/indicados" element={<Indicados />} />
+            <Route exact path="/crm-vendas/atividades" element={<Atividades />} />
+            <Route exact path="/crm-vendas/etiquetas" element={<Etiquetas />} />
+            <Route exact path="/crm-vendas/origem-lead" element={<OrigemLead />} />
+            <Route exact path="/crm-vendas/categoria-agendamentos" element={<CategoriaAgendamentos />} />
+            <Route exact path="/crm-vendas/justificativa" element={<Justificativa />} />
+            <Route exact path="/crm-vendas/gatilhos" element={<Gatilhos />} />
+            <Route exact path="/crm-vendas/interesses-cliente" element={<InteressesCLiente />} />
 
             <Route exact path="/financeiro" element={<Financeiro />} />
             <Route exact path="/financeiro/conta" element={<Conta />} />
+            <Route exact path="/financeiro/banco" element={<Banco />} />
             <Route exact path="/financeiro/forma-pagamento" element={<FormaPagamento />} />
             <Route exact path="/financeiro/plano-conta" element={<PlanoConta />} />
+            <Route exact path="/financeiro/unidade-financeira" element={<UnidadeFinanceira />} />
             <Route exact path="/financeiro/fornecedor" element={<Fornecedor />} />
 
             <Route exact path="/item" element={<ItensPlano />} />
             <Route exact path="/item/categoria-item" element={<CategoriaItem />} />
             <Route exact path="/item/itens" element={<Item />} />
+
+
 
         </Routes>
     </BrowserRouter>

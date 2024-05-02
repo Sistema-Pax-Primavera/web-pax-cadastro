@@ -361,6 +361,10 @@
   width: 100%;
 }
 
+
+
+
+
 .container-cadastro-linha4{
   display: flex;
   flex-direction: column;
@@ -477,4 +481,48 @@
   width: 25%;
   background-color: var(--verde);
   border-radius: 10px;
+}
+
+.unidade-selecionada-perfil{
+  display: flex;
+  align-items: center;
+  background-color: var(--cinza-leve);
+  width: 95%;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.unidade-selecionada-perfil label{
+  font-weight: 500;
+  font-size: 12px;
+  width: 90%;
+}
+
+.unidade-selecionada-perfil button{
+  background-color: var(--cinza-leve);
+  color: var(--vermelho);
+  padding: 0px;
+}
+
+.container-cadastro-linha3-unidade{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.unit-item{
+  width: 20%;
+}
+
+
+.container-cadastro-linha3-unidade h1{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--verde);
+  font-size: 13px;
 }

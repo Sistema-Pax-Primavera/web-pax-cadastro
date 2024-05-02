@@ -8,21 +8,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import CancelIcon from "@mui/icons-material/Cancel";
-import { CSSTransition } from "react-transition-group";
-import ArticleIcon from "@mui/icons-material/Article";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
-import HeaderPet from "../../../components/header-pet";
 import HeaderFinanceiro from "../../../components/header-financeiro";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function createData(name, tipo, status, opcoes) {
   return { name, tipo, status, opcoes };
@@ -90,7 +80,7 @@ const FormaPagamento = () => {
               funcao={()=>abrirModalCadastro()}
             />
           </div>
-          <ModalEdicao titulo="Cadastrar" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
+          <ModalEdicao titulo="Cadastrar Forma de Pagamento" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
               <div className="linhas-campos-cadastro">
                 <div className="tipo-raca-cadas">
                   <label>Forma de Pagamento</label>
@@ -109,7 +99,7 @@ const FormaPagamento = () => {
                 </div>
               </div>
              </ModalEdicao>
-             <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
+             <ModalEdicao titulo="Editar Forma de Pagamento" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
               <div className="linhas-campos-cadastro">
                 <div className="tipo-raca-cadas">
                   <label>Forma de Pagamento</label>

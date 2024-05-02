@@ -8,20 +8,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import CancelIcon from "@mui/icons-material/Cancel";
-import { CSSTransition } from "react-transition-group";
-import ArticleIcon from "@mui/icons-material/Article";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import HeaderUsuarios from "../../../components/header-usuarios";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function createData(name, status, opcoes) {
   return { name, status, opcoes };
@@ -39,16 +30,51 @@ const Funcao = () => {
   const [modalCadastroOpen, setModalCadastro] = useState(false);
   const [permissaoSelecionada, setPermissaoSelecionada] = useState("");
   const [permissoesAdicionadas, setPermissoesAdicionadas] = useState([]);
-  const opcoes = ["Associados"];
+  const [permissoesOptions, setPermissoesOptions] = useState({}); // Armazena as opções selecionadas para cada permissão
+  const opcoes = ["Associados", "Web Vendedor"];
   const [selectedOption, setSelectedOption] = useState("");
   const [displayedOptions, setDisplayedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
-  const options = ["Dados Cadastrais", "Dados Cobrança", "Dependentes", "PDR"];
-
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-    setDisplayedOptions([...displayedOptions, option]);
+  const handleSelectOption = (permissao, option) => {
+    // Adicione ou remova a opção selecionada do estado
+    const isSelected = selectedOptions.some(
+      (opt) => opt.permissao === permissao && opt.option === option
+    );
+    if (isSelected) {
+      setSelectedOptions(
+        selectedOptions.filter(
+          (opt) => !(opt.permissao === permissao && opt.option === option)
+        )
+      );
+    } else {
+      setSelectedOptions([...selectedOptions, { permissao, option }]);
+    }
   };
+
+  const options = [
+    "Dados Cadastrais",
+    "Dados Cobrança",
+    "Dependentes",
+    "PDR",
+    "Recebimento",
+    "Atendimento",
+    "Contato",
+    "Inativar Contrato",
+    "Quitar",
+    "Extrato",
+  ];
+
+  const handleRemovePermissao = (permissao) => {
+    const updatedPermissoes = permissoesAdicionadas.filter(
+      (p) => p !== permissao
+    );
+    const updatedOptions = { ...permissoesOptions };
+    delete updatedOptions[permissao]; // Remove as opções desta permissão
+    setPermissoesAdicionadas(updatedPermissoes);
+    setPermissoesOptions(updatedOptions);
+  };
+
 
   const handleRemoveOption = (option) => {
     const updatedOptions = displayedOptions.filter((item) => item !== option);
@@ -62,6 +88,10 @@ const Funcao = () => {
         ...permissoesAdicionadas,
         permissaoSelecionada,
       ]);
+      setPermissoesOptions({
+        ...permissoesOptions,
+        [permissaoSelecionada]: [],
+      }); // Inicializa as opções selecionadas para esta permissão como um array vazio
       setPermissaoSelecionada(""); // Limpar a seleção após adicionar
     }
   };
@@ -97,11 +127,28 @@ const Funcao = () => {
     setModalCadastro(false);
   };
 
+  const handleOptionPermissaoSelect = (permissao, option) => {
+    setPermissoesOptions({
+      ...permissoesOptions,
+      [permissao]: [...permissoesOptions[permissao], option], // Adiciona a opção selecionada para esta permissão
+    });
+  };
+
+  const handleRemoveOptionPermissao = (permissao, option) => {
+    const updatedOptions = permissoesOptions[permissao].filter(
+      (item) => item !== option
+    );
+    setPermissoesOptions({
+      ...permissoesOptions,
+      [permissao]: updatedOptions, // Remove a opção selecionada para esta permissão
+    });
+  };
+
   return (
     <div className="container-cadastro">
       <HeaderUsuarios />
       <div className="sub-container-cadastro">
-        <div className="pesquisa-tabelas-cadastro">
+        <div className="pesquisa-tabelas-cadastro2">
           <input placeholder="Informe o nome"></input>
           <div className="tamanho-botao-pesquisa">
             <ButtonIconTextoStart
@@ -121,12 +168,12 @@ const Funcao = () => {
             />
           </div>
           <ModalEdicao
-            titulo="Cadastrar"
+            titulo="Cadastrar Função"
             isOpen={modalCadastroOpen}
             onClose={fecharModalCadastro}
           >
             <div className="linhas-campos-cadastro">
-              <div className="tipo-raca-cadas">
+              <div className="tipo-raca-cadas2">
                 <label>Função</label>
                 <input></input>
               </div>
@@ -165,28 +212,57 @@ const Funcao = () => {
                 <div className="colunas-permissoes">
                   {permissoesAdicionadas.map((permissao, index) => (
                     <div key={index} className="permissao-adicionada-associado">
-                      <label>{permissao}</label>
-                      <select
-                        value={selectedOption}
-                        onChange={(e) => handleOptionSelect(e.target.value)}
-                      >
-                        <option value="">Selecione uma opção</option>
-                        {options.map((option) => (
-                          <option
+                      <div className="perm-list-cad">
+                        <div className="nome-permi-button">
+                          <label>{permissao} </label>
+                          <button>
+                            <HighlightOffIcon
+                              fontSize={"small"}
+                              onClick={() => handleRemovePermissao(permissao)}
+                            />
+                          </button>
+                        </div>
+                        <select
+                          value={selectedOption}
+                          onChange={(e) =>
+                            handleOptionPermissaoSelect(
+                              permissao,
+                              e.target.value
+                            )
+                          }
+                        >
+                          <option value="">Selecione uma opção</option>
+                          {options.map((option) => (
+                            <option
+                              key={option}
+                              value={option}
+                              disabled={permissoesOptions[permissao].includes(
+                                option
+                              )}
+                            >
+                              {option}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="perm-list-cad2">
+                        {permissoesOptions[permissao].map((option) => (
+                          <div
                             key={option}
-                            value={option}
-                            disabled={displayedOptions.includes(option)}
+                            className="opcoes-associado-cadastro"
                           >
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                      <div>
-                        {displayedOptions.map((option) => (
-                          <div key={option} className="opcoes-associado-cadastro">
                             <label>{option}</label>
-                            <button onClick={() => handleRemoveOption(option)}>
-                              <HighlightOffIcon fontSize={'small'}/>
+                            <select>
+                              <option>Ler</option>
+                              <option>Gravar</option>
+                              <option>Ler/Gravar</option>
+                            </select>
+                            <button
+                              onClick={() =>
+                                handleRemoveOptionPermissao(permissao, option)
+                              }
+                            >
+                              <HighlightOffIcon fontSize={"small"} />
                             </button>
                           </div>
                         ))}
@@ -198,18 +274,36 @@ const Funcao = () => {
             </div>
           </ModalEdicao>
           <ModalEdicao
-            titulo="Editar"
+            titulo="Editar Função"
             isOpen={modalEdicaoOpen}
             onClose={handleCloseModalEdicao}
           >
             <div className="linhas-campos-cadastro">
-              <div className="tipo-raca-cadas">
-                <label>Raça</label>
+              <div className="tipo-raca-cadas2">
+                <label>Função</label>
                 <input></input>
               </div>
               <div className="tipo-raca-cadas">
-                <label>Espécie</label>
-                <select></select>
+                <label>Permissão</label>
+                <select
+                  value={permissaoSelecionada}
+                  onChange={(e) => setPermissaoSelecionada(e.target.value)}
+                >
+                  <option value="">Selecione uma permissão</option>
+                  {opcoes.map((opcao, index) => (
+                    <option key={index} value={opcao}>
+                      {opcao}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="buttao-salvar-raca">
+                <ButtonIconTextoStart
+                  title={"ADICIONAR"}
+                  corFundoBotao={"#006b33"}
+                  corTextoBotao={"#ffff"}
+                  funcao={handleAdicionar}
+                />
               </div>
               <div className="buttao-salvar-raca">
                 <ButtonIconTextoStart
@@ -218,6 +312,66 @@ const Funcao = () => {
                   corTextoBotao={"#ffff"}
                 />
               </div>
+            </div>
+            <div className="linhas-campos-cadastro2">
+              {permissoesAdicionadas.length > 0 && (
+                <div className="colunas-permissoes">
+                  {permissoesAdicionadas.map((permissao, index) => (
+                    <div key={index} className="permissao-adicionada-associado">
+                      <div className="perm-list-cad">
+                        <div className="nome-permi-button">
+                          <label>{permissao} </label>
+                          <button>
+                            <HighlightOffIcon
+                              fontSize={"small"}
+                              onClick={() => handleRemovePermissao(permissao)}
+                            />
+                          </button>
+                        </div>
+                        <select
+                          value={selectedOption}
+                          onChange={(e) =>
+                            handleOptionPermissaoSelect(
+                              permissao,
+                              e.target.value
+                            )
+                          }
+                        >
+                          <option value="">Selecione uma opção</option>
+                          {options.map((option) => (
+                            <option
+                              key={option}
+                              value={option}
+                              disabled={permissoesOptions[permissao].includes(
+                                option
+                              )}
+                            >
+                              {option}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="perm-list-cad2">
+                        {permissoesOptions[permissao].map((option) => (
+                          <div
+                            key={option}
+                            className="opcoes-associado-cadastro"
+                          >
+                            <label>{option}</label>
+                            <button
+                              onClick={() =>
+                                handleRemoveOptionPermissao(permissao, option)
+                              }
+                            >
+                              <HighlightOffIcon fontSize={"small"} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </ModalEdicao>
         </div>

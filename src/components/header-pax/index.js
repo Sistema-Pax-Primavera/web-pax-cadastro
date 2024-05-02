@@ -111,12 +111,7 @@ const HeaderPax = ({ idioma }) => {
       >
         Crm Vendas
       </button>
-      <button
-        onClick={() => handleMenuClick("/pax/crm-cancelamento")}
-        className={activeRoute === "/pax/crm-cancelamento" ? "active" : ""}
-      >
-        Crm Cancelamento
-      </button>
+      
     </div>
   );
 };

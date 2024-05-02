@@ -55,3 +55,20 @@
     border-radius: 10px;
     width: 20%;
 }
+
+.tipo-parentesco-cadas3 {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.tipo-parentesco-cadas3 label{
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tipo-parentesco-cadas3 select{
+  font-weight: 500;
+  background-color: var(--cinza-leve);
+}
+

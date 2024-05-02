@@ -8,20 +8,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import CancelIcon from "@mui/icons-material/Cancel";
-import { CSSTransition } from "react-transition-group";
-import ArticleIcon from "@mui/icons-material/Article";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import HeaderUsuarios from "../../../components/header-usuarios";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
 
 function createData(name, status, opcoes) {
   return { name, status, opcoes };
@@ -37,6 +29,25 @@ const Permissao = () => {
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
   const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
   const [modalCadastroOpen, setModalCadastro] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const options = [
+    "Associados",
+    "Web Vendedor",
+    "Financeiro",
+    "Cobrança",
+    "Boletos",
+    "Suporte",
+  ];
+
+  const handleSelect = (option) => {
+    setSelectedOptions([...selectedOptions, option]);
+  };
+
+  const handleRemove = (option) => {
+    const updatedOptions = selectedOptions.filter((item) => item !== option);
+    setSelectedOptions(updatedOptions);
+  };
+
   const handleStatusChange = (index) => {
     const updatedFuncao = funcaoEstado.map((funcao, i) => {
       if (i === index) {
@@ -91,7 +102,7 @@ const Permissao = () => {
             />
           </div>
           <ModalEdicao
-            titulo="Cadastrar"
+            titulo="Cadastrar Permissão"
             isOpen={modalCadastroOpen}
             onClose={fecharModalCadastro}
           >
@@ -100,6 +111,23 @@ const Permissao = () => {
                 <label>Permissão</label>
                 <input></input>
               </div>
+              <div className="tipo-raca-cadas">
+                <label>Módulos</label>
+                <select onChange={(e) => handleSelect(e.target.value)}>
+                  <option disabled selected>
+                    Selecione uma opção
+                  </option>
+                  {options.map((option) => (
+                    <option
+                      key={option}
+                      disabled={selectedOptions.includes(option)}
+                    >
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <div className="buttao-salvar-raca">
                 <ButtonIconTextoStart
                   title={"SALVAR"}
@@ -108,23 +136,82 @@ const Permissao = () => {
                 />
               </div>
             </div>
+            <div className="lista-de-permissoes">
+              <label>
+                <AccountTreeIcon fontSize={"small"} /> Módulos Selecionados
+              </label>
+              <div className="linhas-campos-cadastro4">
+                {selectedOptions.map((option) => (
+                  <div key={option} className="nome-modulo-perm">
+                    <label>{option}</label>
+                    <select>
+                      <option>Selecione</option>
+                      <option>Ler</option>
+                      <option>Gravar</option>
+                      <option>Ler/Gravar</option>
+                    </select>
+                    <button onClick={() => handleRemove(option)}>
+                      <HighlightOffIcon fontSize={"small"} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </ModalEdicao>
           <ModalEdicao
-            titulo="Editar"
+            titulo="Editar Permissão"
             isOpen={modalEdicaoOpen}
             onClose={handleCloseModalEdicao}
           >
-            <div className="linhas-campos-cadastro">
+             <div className="linhas-campos-cadastro">
               <div className="tipo-raca-cadas">
                 <label>Permissão</label>
                 <input></input>
               </div>
+              <div className="tipo-raca-cadas">
+                <label>Módulos</label>
+                <select onChange={(e) => handleSelect(e.target.value)}>
+                  <option disabled selected>
+                    Selecione uma opção
+                  </option>
+                  {options.map((option) => (
+                    <option
+                      key={option}
+                      disabled={selectedOptions.includes(option)}
+                    >
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <div className="buttao-salvar-raca">
                 <ButtonIconTextoStart
                   title={"SALVAR"}
                   corFundoBotao={"#006b33"}
                   corTextoBotao={"#ffff"}
                 />
+              </div>
+            </div>
+            <div className="lista-de-permissoes">
+              <label>
+                <AccountTreeIcon fontSize={"small"} /> Módulos Selecionados
+              </label>
+              <div className="linhas-campos-cadastro4">
+                {selectedOptions.map((option) => (
+                  <div key={option} className="nome-modulo-perm">
+                    <label>{option}</label>
+                    <select>
+                      <option>Selecione</option>
+                      <option>Ler</option>
+                      <option>Gravar</option>
+                      <option>Ler/Gravar</option>
+                    </select>
+                    <button onClick={() => handleRemove(option)}>
+                      <HighlightOffIcon fontSize={"small"} />
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
           </ModalEdicao>
@@ -152,7 +239,7 @@ const Permissao = () => {
                     <TableCell align="center">
                       <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
-                        <button onClick={() => handleOpenModalEdicao()}>
+                          <button onClick={() => handleOpenModalEdicao()}>
                             <ModeEditOutlineIcon fontSize={"small"} />
                           </button>
                         </div>

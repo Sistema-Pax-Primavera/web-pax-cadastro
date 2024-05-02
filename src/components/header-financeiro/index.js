@@ -44,6 +44,12 @@ const HeaderFinanceiro = ({ idioma }) => {
         Conta
       </button>
       <button
+        onClick={() => handleMenuClick("/financeiro/banco")}
+        className={activeRoute === "/financeiro/banco" ? "active" : ""}
+      >
+        Banco
+      </button>
+      <button
         onClick={() => handleMenuClick("/financeiro/forma-pagamento")}
         className={activeRoute === "/financeiro/forma-pagamento" ? "active" : ""}
       >
@@ -54,6 +60,12 @@ const HeaderFinanceiro = ({ idioma }) => {
         className={activeRoute === "/financeiro/plano-conta" ? "active" : ""}
       >
         Plano Conta
+      </button>
+      <button
+        onClick={() => handleMenuClick("/financeiro/unidade-financeira")}
+        className={activeRoute === "/financeiro/unidade-financeira" ? "active" : ""}
+      >
+        Unidade Financeira
       </button>
       <button
         onClick={() => handleMenuClick("/financeiro/fornecedor")}

@@ -10,16 +10,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { CSSTransition } from "react-transition-group";
 import ArticleIcon from "@mui/icons-material/Article";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Checkbox from "@mui/material/Checkbox";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function createData(name, status, opcoes) {
   return { name, status, opcoes };
@@ -52,7 +46,7 @@ const Estado = () => {
           <ModalCadastro
             buttonText="CADASTRAR"
             icone2={<ArticleIcon />} // Ícone do Material UI
-            titulo="Cadastrar" // Título do Modal
+            titulo="Cadastrar Estado" // Título do Modal
             children={
               <div className="linhas-campos-cadastro">
                 <div className="tipo-estado-cadas">

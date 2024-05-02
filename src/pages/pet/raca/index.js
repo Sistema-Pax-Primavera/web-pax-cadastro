@@ -8,30 +8,20 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import CancelIcon from "@mui/icons-material/Cancel";
-import { CSSTransition } from "react-transition-group";
-import ArticleIcon from "@mui/icons-material/Article";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../components/modal-cadastro";
 import ModalEdicao from "../../../components/modal-edicao";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import HeaderPet from "../../../components/header-pet";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
-function createData(name, status, opcoes) {
-  return { name, status, opcoes };
+function createData(name,especie, status, opcoes) {
+  return { name, especie, status, opcoes };
 }
 
 const funcaoData = [
-  createData("Buldog", "Ativo"),
-  createData("Pintcher", "Ativo"),
-  createData("Labrador", "Ativo"),
+  createData("Buldog","Teste 01", "Ativo"),
+  createData("Pintcher","Teste 02", "Ativo"),
+  createData("Labrador","Teste 03", "Ativo"),
 ];
 
 const Raca = () => {
@@ -118,7 +108,7 @@ const Raca = () => {
             }
           >
           </ModalCadastro> */}
-          <ModalEdicao titulo="Cadastrar" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
+          <ModalEdicao titulo="Cadastrar Raça" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
             <div className="linhas-campos-cadastro">
               <div className="tipo-raca-cadas">
                 <label>Nome da Raça</label>
@@ -137,7 +127,7 @@ const Raca = () => {
               </div>
             </div>
           </ModalEdicao>
-          <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
+          <ModalEdicao titulo="Editar Raça" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
             <div className="linhas-campos-cadastro">
               <div className="tipo-raca-cadas">
                 <label>Nome da Raça</label>
@@ -163,6 +153,7 @@ const Raca = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Nome</TableCell>
+                  <TableCell align="center">Espécie</TableCell>
                   <TableCell align="center">Status</TableCell>
                   <TableCell align="center">OPÇÕES</TableCell>
                 </TableRow>
@@ -176,6 +167,7 @@ const Raca = () => {
                     <TableCell component="th" scope="row">
                       {row.name}
                     </TableCell>
+                    <TableCell align="center">{row.especie}</TableCell>
                     <TableCell align="center">{row.status}</TableCell>
                     <TableCell align="center">
                       <div className="div-edit-cadastro-parentesco">

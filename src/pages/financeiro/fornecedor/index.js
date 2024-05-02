@@ -8,21 +8,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import CancelIcon from "@mui/icons-material/Cancel";
-import { CSSTransition } from "react-transition-group";
-import ArticleIcon from "@mui/icons-material/Article";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
-import HeaderPet from "../../../components/header-pet";
 import HeaderFinanceiro from "../../../components/header-financeiro";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function createData(name, status, opcoes) {
   return { name, status, opcoes };
@@ -93,7 +83,7 @@ const Fornecedor = () => {
             />
           </div>
           <ModalEdicao
-            titulo="Cadastrar"
+            titulo="Cadastrar Fornecedor"
             isOpen={modalCadastroOpen}
             onClose={fecharModalCadastro}
           >
@@ -113,7 +103,7 @@ const Fornecedor = () => {
             </div>
           </ModalEdicao>
           <ModalEdicao
-            titulo="Editar"
+            titulo="Editar Fornecedor"
             isOpen={modalEdicaoOpen}
             onClose={handleCloseModalEdicao}
           >

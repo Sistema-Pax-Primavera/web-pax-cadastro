@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import HeaderUsuarios from "../../../components/header-usuarios";
 import "./situacao.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,21 +8,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import CancelIcon from "@mui/icons-material/Cancel";
-import { CSSTransition } from "react-transition-group";
-import ArticleIcon from "@mui/icons-material/Article";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
-import HeaderPax from "../../../components/header-pax";
+import HeaderUsuarios from "../../../components/header-usuarios";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
-
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
 
 function createData(name, status, opcoes) {
   return { name, status, opcoes };
@@ -39,6 +29,25 @@ const Situacao = () => {
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
   const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
   const [modalCadastroOpen, setModalCadastro] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const options = [
+    "Associados",
+    "Web Vendedor",
+    "Financeiro",
+    "Cobrança",
+    "Boletos",
+    "Suporte",
+  ];
+
+  const handleSelect = (option) => {
+    setSelectedOptions([...selectedOptions, option]);
+  };
+
+  const handleRemove = (option) => {
+    const updatedOptions = selectedOptions.filter((item) => item !== option);
+    setSelectedOptions(updatedOptions);
+  };
+
   const handleStatusChange = (index) => {
     const updatedFuncao = funcaoEstado.map((funcao, i) => {
       if (i === index) {
@@ -51,7 +60,6 @@ const Situacao = () => {
     });
     setFuncaoEstado(updatedFuncao);
   };
-
   const handleOpenModalEdicao = () => {
     setModalEdicaoOpen(true);
   };
@@ -67,9 +75,10 @@ const Situacao = () => {
   const fecharModalCadastro = () => {
     setModalCadastro(false);
   };
+
   return (
     <div className="container-cadastro">
-      <HeaderPax />
+      <HeaderUsuarios />
       <div className="sub-container-cadastro">
         <div className="pesquisa-tabelas-cadastro">
           <div className="input-pesquisa-cadastro3">
@@ -89,68 +98,120 @@ const Situacao = () => {
               corFundoBotao={"#006b33"}
               corTextoBotao={"#ffff"}
               fontSizeBotao={"10px"}
-              funcao={()=>abrirModalCadastro()}
+              funcao={() => abrirModalCadastro()}
             />
           </div>
-          <ModalEdicao titulo="Cadastrar" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
-              <div>
-                <div className="linhas-campos-cadastro">
-                  <div className="tipo-parentesco-cadas">
-                    <label>Situação</label>
-                    <input></input>
-                  </div>
-                  <div className="tipo-parentesco-cadas">
-                    <label>Módulos</label>
-                    <select></select>
-                  </div>
-                </div>
-                <div className="linhas-campos-cadastro">
-                  <div className="tipo-parentesco-cadas">
-                    <label>Modulos Selecionados</label>
-                    <div className="buttao-salvar-parentesco">
-                      <ButtonIconTextoStart
-                        title={"SALVAR"}
-                        corFundoBotao={"#006b33"}
-                        corTextoBotao={"#ffff"}
-                      />
-                    </div>
-                  </div>
-                </div>
+          <ModalEdicao
+            titulo="Cadastrar Situação"
+            isOpen={modalCadastroOpen}
+            onClose={fecharModalCadastro}
+          >
+            <div className="linhas-campos-cadastro">
+              <div className="tipo-raca-cadas">
+                <label>Situação</label>
+                <input></input>
               </div>
-              </ModalEdicao>
-              <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
-              <div>
-                <div className="linhas-campos-cadastro">
-                  <div className="tipo-parentesco-cadas">
-                    <label>Situação</label>
-                    <input></input>
-                  </div>
-                  <div className="tipo-parentesco-cadas">
-                    <label>Módulos</label>
-                    <select></select>
-                  </div>
-                </div>
-                <div className="linhas-campos-cadastro">
-                  <div className="tipo-parentesco-cadas">
-                    <label>Modulos Selecionados</label>
-                    <div className="buttao-salvar-parentesco">
-                      <ButtonIconTextoStart
-                        title={"SALVAR"}
-                        corFundoBotao={"#006b33"}
-                        corTextoBotao={"#ffff"}
-                      />
-                    </div>
-                  </div>
-                </div>
+              <div className="tipo-raca-cadas">
+                <label>Módulos</label>
+                <select onChange={(e) => handleSelect(e.target.value)}>
+                  <option disabled selected>
+                    Selecione uma opção
+                  </option>
+                  {options.map((option) => (
+                    <option
+                      key={option}
+                      disabled={selectedOptions.includes(option)}
+                    >
+                      {option}
+                    </option>
+                  ))}
+                </select>
               </div>
-              </ModalEdicao>
+
+              <div className="buttao-salvar-raca">
+                <ButtonIconTextoStart
+                  title={"SALVAR"}
+                  corFundoBotao={"#006b33"}
+                  corTextoBotao={"#ffff"}
+                />
+              </div>
+            </div>
+            <div className="lista-de-permissoes">
+              <label>
+                <AccountTreeIcon fontSize={"small"} /> Módulos Selecionados
+              </label>
+              <div className="linhas-campos-cadastro4">
+                {selectedOptions.map((option) => (
+                  <div key={option} className="nome-modulo-perm2">
+                    <label>{option}</label>
+                   
+                    <button onClick={() => handleRemove(option)}>
+                      <HighlightOffIcon fontSize={"small"} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ModalEdicao>
+          <ModalEdicao
+            titulo="Editar Situação"
+            isOpen={modalEdicaoOpen}
+            onClose={handleCloseModalEdicao}
+          >
+            <div className="linhas-campos-cadastro">
+              <div className="tipo-raca-cadas">
+                <label>Situação</label>
+                <input></input>
+              </div>
+              <div className="tipo-raca-cadas">
+                <label>Módulos</label>
+                <select onChange={(e) => handleSelect(e.target.value)}>
+                  <option disabled selected>
+                    Selecione uma opção
+                  </option>
+                  {options.map((option) => (
+                    <option
+                      key={option}
+                      disabled={selectedOptions.includes(option)}
+                    >
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="buttao-salvar-raca">
+                <ButtonIconTextoStart
+                  title={"SALVAR"}
+                  corFundoBotao={"#006b33"}
+                  corTextoBotao={"#ffff"}
+                />
+              </div>
+            </div>
+            <div className="lista-de-permissoes">
+              <label>
+                <AccountTreeIcon fontSize={"small"} /> Módulos Selecionados
+              </label>
+              <div className="linhas-campos-cadastro4">
+                {selectedOptions.map((option) => (
+                  <div key={option} className="nome-modulo-perm">
+                    <label>{option}</label>
+                   
+                    <button onClick={() => handleRemove(option)}>
+                      <HighlightOffIcon fontSize={"small"} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ModalEdicao>
         </div>
         <div className="tabelas-cadastro-usuarios">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Nome</TableCell>
+                  <TableCell>Situação</TableCell>
                   <TableCell align="center">Status</TableCell>
                   <TableCell align="center">OPÇÕES</TableCell>
                 </TableRow>
@@ -168,7 +229,7 @@ const Situacao = () => {
                     <TableCell align="center">
                       <div className="div-edit-cadastro-parentesco">
                         <div className="edit-cadastro-parentesco">
-                        <button onClick={() => handleOpenModalEdicao()}>
+                          <button onClick={() => handleOpenModalEdicao()}>
                             <ModeEditOutlineIcon fontSize={"small"} />
                           </button>
                         </div>

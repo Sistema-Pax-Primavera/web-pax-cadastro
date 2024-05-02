@@ -9,21 +9,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import CancelIcon from "@mui/icons-material/Cancel";
-import { CSSTransition } from "react-transition-group";
-import ArticleIcon from "@mui/icons-material/Article";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
-import HeaderPax from "../../../components/header-pax";
 import HeaderFinanceiro from "../../../components/header-financeiro";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function createData(name, codigo, tipo, nivel, visivel, status,) {
   return { name, codigo, tipo, nivel, visivel, status, };
@@ -91,7 +81,7 @@ const PlanoConta = () => {
               funcao={()=>abrirModalCadastro()}
             />
           </div>
-          <ModalEdicao titulo="Cadastrar" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
+          <ModalEdicao titulo="Cadastrar Plano Conta" isOpen={modalCadastroOpen} onClose={fecharModalCadastro}>
               <div>
                 <div className="linhas-campos-cadastro">
                   <div className="tipo-parentesco-cadas">
@@ -126,7 +116,7 @@ const PlanoConta = () => {
                 <div className="buttao-salvar-parentesco"></div>
               </div>
               </ModalEdicao>
-              <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
+              <ModalEdicao titulo="Editar Plano Conta" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
               <div>
                 <div className="linhas-campos-cadastro">
                   <div className="tipo-parentesco-cadas">

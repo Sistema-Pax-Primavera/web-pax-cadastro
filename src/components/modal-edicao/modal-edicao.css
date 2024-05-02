@@ -69,6 +69,10 @@
     margin-bottom: 10px;
 }
 
+.fecha-modal-cadastro label{
+    width: 100%;
+}
+
 .fecha-modal-cadastro button {
     background-color: transparent;
     border: none;

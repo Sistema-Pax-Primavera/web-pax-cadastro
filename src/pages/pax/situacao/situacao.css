@@ -1,57 +1,80 @@
-.edit-cadastro-parentesco button {
-  width: 100%;
-  cursor: pointer;
-  border-radius: 10px;
-}
-
-.edit-cadastro-paren button {
-  background-color: var(--vermelho);
-  border-radius: 10px;
-  width: 100%;
-  cursor: pointer;
-}
-
-.div-edit-cadastro-parentesco {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.linhas-campos-cadastro{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
-}
-
-
-.tipo-parentesco-cadas{
+.tipo-raca-cadas{
     display: flex;
     flex-direction: column;
     width: 40%;
 }
 
-.tipo-parentesco-cadas label{
+.tipo-raca-cadas label{
     font-size: 12px;
     color: black;
     font-weight: 500;
 }
 
-.tipo-parentesco-cadas input{
+.tipo-raca-cadas select{
     background-color: var(--cinza-leve);
     font-weight: 500;
 }
 
-.buttao-salvar-parentesco{
+.tipo-raca-cadas input{
+    background-color: var(--cinza-leve);
+    font-weight: 500;
+}
+
+.buttao-salvar-raca{
     margin-top: 15px;
     background-color: var(--verde);
     border-radius: 10px;
     width: 20%;
 }
 
-.tipo-parentesco-cadas label{
-  color: var(--preto);
-  font-weight: 500;
+.lista-de-permissoes{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.lista-de-permissoes label{
+    font-size: 12px;
+    color: var(--verde);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nome-modulo-perm2{
+    background-color: var(--cinza-leve);
+    border-radius: 5px;
+    width: 20%;
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    align-items: center;
+}
+
+.nome-modulo-perm2 button{
+    padding: 0px; 
+    background-color: var(--branco);
+    color: var(--vermelho);
+    cursor: pointer;
+    border-radius: 50px;
+    width: 10%;
+}
+
+.nome-modulo-perm2 label{
+    width: 90%;
+    font-size: 12px;
+    color: var(--preto);
+    font-weight: 500;
+
+}
+
+
+.linhas-campos-cadastro4 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    max-width: 800px;
+    flex-wrap: wrap;
 }

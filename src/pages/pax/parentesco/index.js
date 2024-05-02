@@ -9,20 +9,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import CancelIcon from "@mui/icons-material/Cancel";
-import { CSSTransition } from "react-transition-group";
-import ArticleIcon from "@mui/icons-material/Article";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import Checkbox from "@mui/material/Checkbox";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalCadastro from "../../../components/modal-cadastro";
 import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import HeaderPax from "../../../components/header-pax";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
+import PlaceIcon from "@mui/icons-material/Place";
 
 function createData(name, status, opcoes) {
   return { name, status, opcoes };
@@ -38,6 +30,17 @@ const Parentesco = () => {
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
   const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
   const [modalCadastroOpen, setModalCadastro] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const options = ["Dourados", "Itaporã", "Ponta Porã"];
+
+  const handleSelect = (option) => {
+    setSelectedOptions([...selectedOptions, option]);
+  };
+
+  const handleRemove = (option) => {
+    const updatedOptions = selectedOptions.filter((item) => item !== option);
+    setSelectedOptions(updatedOptions);
+  };
   const handleStatusChange = (index) => {
     const updatedFuncao = funcaoEstado.map((funcao, i) => {
       if (i === index) {
@@ -93,7 +96,7 @@ const Parentesco = () => {
             />
           </div>
           <ModalEdicao
-            titulo="Cadastrar"
+            titulo="Cadastrar Parentesco"
             isOpen={modalCadastroOpen}
             onClose={fecharModalCadastro}
           >
@@ -101,6 +104,22 @@ const Parentesco = () => {
               <div className="tipo-parentesco-cadas">
                 <label>Tipo de Parentesco</label>
                 <input></input>
+              </div>
+              <div className="tipo-parentesco-cadas">
+                <label>Unidade</label>
+                <select onChange={(e) => handleSelect(e.target.value)}>
+                  <option disabled selected>
+                    Selecione uma opção
+                  </option>
+                  {options.map((option) => (
+                    <option
+                      key={option}
+                      disabled={selectedOptions.includes(option)}
+                    >
+                      {option}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="buttao-salvar-parentesco">
                 <ButtonIconTextoStart
@@ -110,12 +129,53 @@ const Parentesco = () => {
                 />
               </div>
             </div>
+            <div className="lista-de-permissoes">
+              <label>
+                <PlaceIcon fontSize={"small"} /> Unidades Selecionados
+              </label>
+              <div className="linhas-campos-cadastro">
+                {selectedOptions.map((option) => (
+                  <div key={option} className="nome-modulo-perm2">
+                    <p>{option}</p>
+                    <div className="adicional-sim-nao">
+                      <p>Adicional</p>
+                      <select>
+                        <option>Selecione</option>
+                        <option>Sim</option>
+                        <option>Não</option>
+                      </select>
+                    </div>
+                    <button onClick={() => handleRemove(option)}>
+                      <HighlightOffIcon fontSize={"small"} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </ModalEdicao>
-          <ModalEdicao titulo="Editar" isOpen={modalEdicaoOpen} onClose={handleCloseModalEdicao}>
+          <ModalEdicao
+            titulo="Editar Parentesco"
+            isOpen={modalEdicaoOpen}
+            onClose={handleCloseModalEdicao}
+          >
             <div className="linhas-campos-cadastro">
               <div className="tipo-parentesco-cadas">
                 <label>Tipo de Parentesco</label>
                 <input></input>
+              </div>
+              <div className="tipo-parentesco-cadas">
+                <label>Unidade</label>
+                <select onChange={(e) => handleSelect(e.target.value)}>
+                  <option disabled selected>
+                    Selecione uma opção
+                  </option>
+                  {options.map(
+                    (option) =>
+                      !selectedOptions.includes(option) && (
+                        <option key={option}>{option}</option>
+                      )
+                  )}
+                </select>
               </div>
               <div className="buttao-salvar-parentesco">
                 <ButtonIconTextoStart
@@ -123,6 +183,21 @@ const Parentesco = () => {
                   corFundoBotao={"#006b33"}
                   corTextoBotao={"#ffff"}
                 />
+              </div>
+            </div>
+            <div className="lista-de-permissoes">
+              <label>
+                <PlaceIcon fontSize={"small"} /> Módulos Selecionados
+              </label>
+              <div className="linhas-campos-cadastro">
+                {selectedOptions.map((option) => (
+                  <div key={option} className="nome-modulo-perm">
+                    <label>{option}</label>
+                    <button onClick={() => handleRemove(option)}>
+                      <HighlightOffIcon fontSize={"small"} />
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
           </ModalEdicao>
