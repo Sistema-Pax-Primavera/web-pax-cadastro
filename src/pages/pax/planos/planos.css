@@ -104,3 +104,94 @@
   cursor: pointer;
   color: var(--branco);
 }
+
+
+.plano-selecionado-cadastro2{
+  display: flex;
+  gap: 10px;
+  width: 28%;
+  background-color: var(--cinza-leve);
+  border-radius: 10px;
+  flex-direction: column;
+  padding: 7px;
+}
+
+
+
+.plano-selecionado-cadastro{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.plano-selecionado-cadastro p{
+  font-size: 12px;
+  font-weight: 700;
+  width: 80%;
+}
+
+.plano-selecionado-cadastro button{
+  color: var(--vermelho);
+  background-color: var(--cinza-leve);
+  cursor: pointer;
+}
+
+
+.valores-plano-mensalidade{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.valores-plano-mensalidade label{
+  width: 70%;
+  font-size: 12px;
+}
+
+.valores-plano-mensalidade p{
+  width: 30%;
+  background-color: var(--branco);
+  border-radius: 5px;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+  color: var(--vermelho);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.valores-plano-mensalidade2{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.valores-plano-mensalidade2 label{
+  width: 70%;
+  font-size: 12px;
+}
+
+.valores-plano-mensalidade2 p{
+  width: 30%;
+  background-color: var(--branco);
+  border-radius: 5px;
+  padding: 2px;
+  color: var(--verde);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.valores-plano-mensalidade2 input{
+  width:28%;
+  background-color: var(--branco);
+  padding: 4px;
+  color: var(--verde);
+  font-weight: 800;
+  font-size: 12px;
+
+}
+
+.valores-plano-mensalidade a{
+  color: var(--verde);
+}

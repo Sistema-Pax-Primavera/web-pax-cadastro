@@ -13,6 +13,7 @@ import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import HeaderPax from "../../../components/header-pax";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
+import PlaceIcon from "@mui/icons-material/Place";
 
 function createData(name, status, opcoes) {
   return { name, status, opcoes };
@@ -27,10 +28,28 @@ const funcaoData = [
 const Planos = () => {
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
   const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
+  const [modalReajusteOpen, setModalReajuste] = useState(false);
   const [modalCadastroOpen, setModalCadastro] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState("");
   const [selectedUnits, setSelectedUnits] = useState([]);
   const units = ["Selecione", "Dourados", "Itaporã", "Ponta Porã"];
+  const [selectedPlans, setSelectedPlans] = useState([]);
+  const [availablePlans, setAvailablePlans] = useState([
+    "Plano Simples",
+    "Plano Luxo",
+    "Plano Super Luxo",
+  ]);
+
+  const handlePlanChange = (event) => {
+    const selectedPlan = event.target.value;
+    setSelectedPlans([...selectedPlans, selectedPlan]);
+    setAvailablePlans(availablePlans.filter((plan) => plan !== selectedPlan));
+  };
+
+  const handlePlanDelete = (plan) => {
+    setSelectedPlans(selectedPlans.filter((p) => p !== plan));
+    setAvailablePlans([...availablePlans, plan]);
+  };
 
   const handleUnitChange = (event) => {
     const selected = event.target.value;
@@ -70,6 +89,14 @@ const Planos = () => {
   const fecharModalCadastro = () => {
     setModalCadastro(false);
   };
+
+  const abrirModalReajuste = () => {
+    setModalReajuste(true);
+  };
+
+  const fecharModalReajuste = () => {
+    setModalReajuste(false);
+  };
   return (
     <div className="container-cadastro">
       <HeaderPax />
@@ -93,6 +120,15 @@ const Planos = () => {
               corTeaxtoBotao={"#ffff"}
               fontSizeBotao={"10px"}
               funcao={() => abrirModalCadastro()}
+            />
+          </div>
+          <div className="tamanho-botao-pesquisa">
+            <ButtonIconTextoStart
+              title={"Reajuste"}
+              corFundoBotao={"#006b33"}
+              corTeaxtoBotao={"#ffff"}
+              fontSizeBotao={"10px"}
+              funcao={() => abrirModalReajuste()}
             />
           </div>
           <ModalEdicao
@@ -176,11 +212,91 @@ const Planos = () => {
             </div>
           </ModalEdicao>
           <ModalEdicao
+            titulo="Reajuste Planos"
+            isOpen={modalReajusteOpen}
+            onClose={fecharModalReajuste}
+          >
+            <div className="linhas-campos-cadastro">
+              <div className="tipo-parentesco-cadas">
+                <label>Selecione o Plano</label>
+                <select value="" onChange={handlePlanChange}>
+                  <option disabled value="">
+                    Selecione
+                  </option>
+                  {availablePlans.map((plan) => (
+                    <option key={plan} value={plan}>
+                      {plan}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="tipo-parentesco-cadas">
+                <label>Selecione a Unidade</label>
+                <select>
+                  <option>Selecione</option>
+                  <option>Dourados</option>
+                  <option>Itaporã</option>
+                  <option>Ponta Porã</option>
+                </select>
+              </div>
+              <div className="buttao-salvar-parentesco">
+                <ButtonIconTextoStart
+                  title={"ADICIONAR"}
+                  corFundoBotao={"#006b33"}
+                  corTextoBotao={"#ffff"}
+                />
+              </div>
+              <div className="buttao-salvar-parentesco">
+                <ButtonIconTextoStart
+                  title={"SALVAR"}
+                  corFundoBotao={"#006b33"}
+                  corTextoBotao={"#ffff"}
+                />
+              </div>
+            </div>
+            <div className="linhas-campos-cadastro">
+              <label>Planos Selecionados:</label>
+            </div>
+            <div className="linhas-campos-cadastro">
+              {selectedPlans.map((plan) => (
+                <div key={plan} className="plano-selecionado-cadastro2">
+                  <div className="plano-selecionado-cadastro">
+                    <p>{plan}</p>
+                    <button onClick={() => handlePlanDelete(plan)}>
+                      <HighlightOffIcon fontSize={"small"} />
+                    </button>
+                  </div>
+                  <div className="valores-plano-mensalidade">
+                    <a>
+                      <PlaceIcon fontSize={"small"} />
+                    </a>
+                  </div>
+                  <div className="valores-plano-mensalidade">
+                    <label>Plano Atual:</label>
+                    <p>R$100</p>
+                  </div>
+                  <div className="valores-plano-mensalidade">
+                    <label>Mensalidade Atual:</label>
+                    <p>R$100</p>
+                  </div>
+                  <div className="valores-plano-mensalidade2">
+                    <label>Novo Valor Plano :</label>
+                    <input></input>
+                  </div>
+                  <div className="valores-plano-mensalidade2">
+                    <label>Nova Mensalidade Atual:</label>
+                    <input></input>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ModalEdicao>
+          <ModalEdicao
             titulo="Editar Planos"
             isOpen={modalEdicaoOpen}
             onClose={handleCloseModalEdicao}
           >
-             <div className="linhas-campos-cadastro">
+            <div className="linhas-campos-cadastro">
               <div className="tipo-parentesco-cadas">
                 <label>Plano</label>
                 <input></input>
