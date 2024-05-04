@@ -85,6 +85,7 @@
     justify-content: center;
     background-color: var(--cinza-leve);
     border-radius: 10px;
+    width: 48%;
 }
 
 .remove-itens-cadastro{

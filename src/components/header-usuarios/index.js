@@ -44,7 +44,7 @@ const HeaderUsuarios = ({ idioma }) => {
         onClick={() => handleMenuClick("/usuarios/perfil")}
         className={activeRoute === "/usuarios/perfil" ? "active" : ""}
       >
-        Perfil
+        Usuário
       </button>
       <button
         onClick={() => handleMenuClick("/usuarios/funcao")}
@@ -58,12 +58,12 @@ const HeaderUsuarios = ({ idioma }) => {
       >
         Setor
       </button>
-      <button
+      {/* <button
         onClick={() => handleMenuClick("/usuarios/permissao")}
         className={activeRoute === "/usuarios/permissao" ? "active" : ""}
       >
         Permissão
-      </button>
+      </button> */}
     </div>
   );
 };

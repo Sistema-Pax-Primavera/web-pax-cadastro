@@ -13,6 +13,7 @@ import ButtonIconTextoStart from "../../../components/button-icon-texto-start";
 import HeaderUsuarios from "../../../components/header-usuarios";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 function createData(name, status, opcoes) {
   return { name, status, opcoes };
@@ -174,11 +175,11 @@ const Funcao = () => {
           >
             <div className="linhas-campos-cadastro">
               <div className="tipo-raca-cadas2">
-                <label>Função</label>
+                <label>Permissão</label>
                 <input></input>
               </div>
               <div className="tipo-raca-cadas">
-                <label>Permissão</label>
+                <label>Módulo</label>
                 <select
                   value={permissaoSelecionada}
                   onChange={(e) => setPermissaoSelecionada(e.target.value)}
@@ -193,7 +194,7 @@ const Funcao = () => {
               </div>
               <div className="buttao-salvar-raca">
                 <ButtonIconTextoStart
-                  title={"ADICIONAR"}
+                  icon={<AddCircleOutlineIcon fontSize={'small'}/>}
                   corFundoBotao={"#006b33"}
                   corTextoBotao={"#ffff"}
                   funcao={handleAdicionar}
@@ -299,7 +300,7 @@ const Funcao = () => {
               </div>
               <div className="buttao-salvar-raca">
                 <ButtonIconTextoStart
-                  title={"ADICIONAR"}
+                   icon={<AddCircleOutlineIcon fontSize={'small'}/>}
                   corFundoBotao={"#006b33"}
                   corTextoBotao={"#ffff"}
                   funcao={handleAdicionar}

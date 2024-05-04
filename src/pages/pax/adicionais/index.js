@@ -137,16 +137,6 @@ const Adicionais = () => {
                   ))}
                 </select>
               </div>
-              <div className="tipo-parentesco-cadas">
-                <label>Tipo</label>
-                <select value={selectedTip} onChange={handleTipChange}>
-                  {tips.map((tip) => (
-                    <option key={tip} disabled={selectedTips.includes(tip)}>
-                      {tip}
-                    </option>
-                  ))}
-                </select>
-              </div>
 
               <div className="buttao-salvar-parentesco">
                 <ButtonIconTextoStart
@@ -184,42 +174,53 @@ const Adicionais = () => {
                         </button>
                       </div>
                     </div>
+                    <div className="tipo-parentesco-cadas-uni">
+                    <label>Tipo</label>
+                    <select value={selectedTip} onChange={handleTipChange}>
+                      {tips.map((tip) => (
+                        <option key={tip} disabled={selectedTips.includes(tip)}>
+                          {tip}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-                </div>
-              ))}
-            </div>
-            <div className="linhas-campos-plano2">
-              {selectedTips.map((tip, index) => (
-                <div key={index} className="linhas-campos-plano2">
-                  <div className="linhas-campos-plano3">
-                    <label>Tipo: {tip}</label>
-                    <div className="linhas-campos-cadastro">
-                      <div className="tipo-parentesco-cadas3">
-                        <label>Porte</label>
-                        <select>
-                        <option>Selecione</option>
-                          <option>P</option>
-                          <option>M</option>
-                          <option>G</option>
-                          <option>GG</option>
-                        </select>
+                  <div className="linhas-campos-cadastro">
+                    {selectedTips.map((tip, index) => (
+                      <div key={index} className="linhas-campos-cadastro">
+                        <div className="tipos-plano3">
+                          <p>{tip}</p>
+                          <div className="linhas-campos-cadastro">
+                            <div className="tipo-parentesco-cadas3">
+                              <label>Porte</label>
+                              <select>
+                                <option>Selecione</option>
+                                <option>P</option>
+                                <option>M</option>
+                                <option>G</option>
+                                <option>GG</option>
+                              </select>
+                            </div>
+                            <div className="tipo-parentesco-cadas3">
+                              <label>Resgate</label>
+                              <select>
+                                <option>Selecione</option>
+                                <option>Com Resgate</option>
+                                <option>Sem Resgate</option>
+                              </select>
+                            </div>
+
+                            <div className="button-planos">
+                              <button onClick={() => handleRemoveTip(tip)}>
+                                <HighlightOffIcon fontSize={"small"} />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="tipo-parentesco-cadas3">
-                        <label>Resgate</label>
-                        <select>
-                          <option>Selecione</option>
-                          <option>Com Resgate</option>
-                          <option>Sem Resgate</option>
-                        </select>
-                      </div>
-                      
-                      <div className="button-planos">
-                        <button onClick={() => handleRemoveTip(tip)}>
-                          <HighlightOffIcon fontSize={"small"} />
-                        </button>
-                      </div>
-                    </div>
+                    ))}
+                  </div> 
                   </div>
+                  
                 </div>
               ))}
             </div>

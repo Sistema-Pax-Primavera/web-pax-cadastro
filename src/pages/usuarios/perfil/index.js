@@ -188,7 +188,7 @@ const Perfil = () => {
             />
           </div>
           <ModalEdicao
-            titulo="Cadastrar Perfil"
+            titulo="Cadastrar Usuário"
             isOpen={modalCadastroOpen}
             onClose={fecharModalCadastro}
           >
@@ -226,7 +226,34 @@ const Perfil = () => {
                   <input />
                 </div>
                 <div className="campos-03-cadastro">
-                  <label>Unidade</label>
+                  <label>Setor</label>
+                  <select>
+                    <option>Selecione</option>
+                    <option>Controladoria</option>
+                    <option>TI</option>
+                    <option>Suporte</option>
+                  </select>
+                </div>
+
+                <div className="campos-03-cadastro">
+                  <label>Permissão</label>
+                  <select>
+                    <option>Selecione</option>
+                    <option>Permissão 01</option>
+                    <option>Permissão 02</option>
+                    <option>Permissão 03</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div className="container-cadastro-linha3">
+              <h1>
+                <LocationOnIcon fontSize={"small"} /> Unidades
+              </h1>
+              <div className="container-linha">
+                <div className="campos-03-cadastro">
+                  <label>Selecione uma Unidade</label>
                   <select
                     onChange={handleSelecionarUnidade}
                     value={unidadeSelecionada}
@@ -238,12 +265,6 @@ const Perfil = () => {
                   </select>
                 </div>
               </div>
-            </div>
-
-            <div className="container-cadastro-linha3">
-              <h1>
-                <LocationOnIcon fontSize={"small"} /> Unidades
-              </h1>
 
               <div className="container-cadastro-linha3-unidade">
                 {unidadesExibidas.map((unidade, index) => (
@@ -251,7 +272,7 @@ const Perfil = () => {
                     <div className="unidade-selecionada-perfil">
                       <label>{unidade}</label>
                       <button onClick={() => handleRemoverUnidade(unidade)}>
-                        <HighlightOffIcon fontSize={'small'}/>
+                        <HighlightOffIcon fontSize={"small"} />
                       </button>
                     </div>
                   </div>
@@ -259,71 +280,43 @@ const Perfil = () => {
               </div>
             </div>
             <div className="container-cadastro-linha3">
-              <h1>
-                <AssignmentTurnedInIcon fontSize={"small"} /> Permissões
-              </h1>
               <div className="divide-2-cadastro">
-                <div className="colunas2-cadastro">
-                  <div className="container-linha-cadastro">
-                    <div className="campos-05-cadastro">
-                      <label>Selecione o Perfil</label>
-                      <select onChange={handlePerfilChange}>
-                        <option value="">Selecione...</option>
-                        {perfisDisponiveis.map((perfil, index) => (
-                          <option key={index} value={perfil}>
-                            {perfil}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  <div className="container-linha-cadastro2">
-                    {perfisSelecionados.map((perfil, index) => (
-                      <div key={index} className="selecione-cadastro2">
-                        <p>{perfil}</p>
-                        <div className="checkbox-icon">
-                          <Checkbox {...label} />
-                          <HighlightOffIcon
-                            onClick={() => handleRemoverPerfil(perfil)}
-                            fontSize={"small"}
-                            color={"error"}
-                            sx={{ cursor: "pointer" }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
                 <div className="colunas4-cadastro">
-                  <div className="container-linha-cadastro">
-                    <div className="campos-05-cadastro">
-                      <label>Selecione a Unidade</label>
-                      <select
-                        value={selectedUnidade}
-                        onChange={(e) => setSelectedUnidade(e.target.value)}
-                      >
-                        <option value="">Selecione...</option>
-                        <option value="Dourados">Dourados</option>
-                        <option value="Rio Brilhante">Rio Brilhante</option>
-                        <option value="Itaporã">Itaporã</option>
-                      </select>
+                  <h1>
+                    <AssignmentTurnedInIcon fontSize={"small"} /> Permissões
+                  </h1>
+                  <div className="fundo-colunas-5-cadastro">
+                    <div className="container-linha-cadastro">
+                      <div className="campos-05-cadastro">
+                        <label>Selecione a Unidade</label>
+                        <select
+                          value={selectedUnidade}
+                          onChange={(e) => setSelectedUnidade(e.target.value)}
+                        >
+                          <option value="">Selecione...</option>
+                          <option value="Dourados">Dourados</option>
+                          <option value="Rio Brilhante">Rio Brilhante</option>
+                          <option value="Itaporã">Itaporã</option>
+                        </select>
+                      </div>
+                      <div className="permissoe-selecione-cadastro">
+                        <label>Permissões</label>
+                        <select
+                          value={selectedPermissao}
+                          onChange={(e) => setSelectedPermissao(e.target.value)}
+                        >
+                          <option value="">Selecione...</option>
+                          <option value="Controle">Controle</option>
+                          <option value="Venda">Venda</option>
+                          <option value="Associado">Associado</option>
+                        </select>
+                      </div>
+                      <button onClick={handleAddItem}>
+                        <AddCircleOutlineIcon fontSize="small" />
+                      </button>
                     </div>
-                    <div className="permissoe-selecione-cadastro">
-                      <label>Permissões</label>
-                      <select
-                        value={selectedPermissao}
-                        onChange={(e) => setSelectedPermissao(e.target.value)}
-                      >
-                        <option value="">Selecione...</option>
-                        <option value="Controle">Controle</option>
-                        <option value="Venda">Venda</option>
-                        <option value="Associado">Associado</option>
-                      </select>
-                    </div>
-                    <button onClick={handleAddItem}>
-                      <AddCircleOutlineIcon fontSize="small" />
-                    </button>
                   </div>
+
                   <div className="per-uni">
                     <div className="per-uni3">
                       {addedItems.map((item, index) => (
@@ -344,23 +337,26 @@ const Perfil = () => {
                     </div>
                   </div>
                 </div>
+                <div className="colunas5-cadastro">
+                  <h1>
+                    <DashboardIcon fontSize={"small"} /> Acessos
+                  </h1>
+                  <div className="fundo-colunas-6-cadastro">
+                    <div className="container-linha-cadastro3">
+                      <div className="acessos-cadastro">
+                        <Checkbox {...label} size="small" />
+                        <label>Pax Vendedor</label>
+                      </div>
+                      <div className="acessos-cadastro">
+                        <Checkbox {...label} size="small" />
+                        <label>Pax Cobrador</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="container-cadastro-linha3">
-              <h1>
-                <DashboardIcon fontSize={"small"} /> Acessos
-              </h1>
-              <div className="container-linha-cadastro">
-                <div className="acessos-cadastro">
-                  <Checkbox {...label} size="small" />
-                  <label>Pax Vendedor</label>
-                </div>
-                <div className="acessos-cadastro">
-                  <Checkbox {...label} size="small" />
-                  <label>Pax Cobrador</label>
-                </div>
-              </div>
-            </div>
+
             <div className="container-cadastro-linha4">
               <div className="salva-perfil-cadastro">
                 <ButtonIconTextoStart
@@ -374,7 +370,7 @@ const Perfil = () => {
             </div>
           </ModalEdicao>
           <ModalEdicao
-            titulo="Editar Perfil"
+            titulo="Editar Usuário"
             isOpen={modalEdicaoOpen}
             onClose={handleCloseModalEdicao}
           >
@@ -412,78 +408,97 @@ const Perfil = () => {
                   <input />
                 </div>
                 <div className="campos-03-cadastro">
-                  <label>Unidade</label>
-                  <select></select>
+                  <label>Setor</label>
+                  <select>
+                    <option>Selecione</option>
+                    <option>Controladoria</option>
+                    <option>TI</option>
+                    <option>Suporte</option>
+                  </select>
+                </div>
+
+                <div className="campos-03-cadastro">
+                  <label>Permissão</label>
+                  <select>
+                    <option>Selecione</option>
+                    <option>Permissão 01</option>
+                    <option>Permissão 02</option>
+                    <option>Permissão 03</option>
+                  </select>
                 </div>
               </div>
             </div>
 
             <div className="container-cadastro-linha3">
               <h1>
-                <AssignmentTurnedInIcon fontSize={"small"} /> Permissões
+                <LocationOnIcon fontSize={"small"} /> Unidades
               </h1>
-              <div className="divide-2-cadastro">
-                <div className="colunas2-cadastro">
-                  <div className="container-linha-cadastro">
-                    <div className="campos-05-cadastro">
-                      <label>Selecione o Perfil</label>
-                      <select onChange={handlePerfilChange}>
-                        <option value="">Selecione...</option>
-                        {perfisDisponiveis.map((perfil, index) => (
-                          <option key={index} value={perfil}>
-                            {perfil}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  <div className="container-linha-cadastro2">
-                    {perfisSelecionados.map((perfil, index) => (
-                      <div key={index} className="selecione-cadastro2">
-                        <p>{perfil}</p>
-                        <div className="checkbox-icon">
-                          <Checkbox {...label} />
-                          <HighlightOffIcon
-                            onClick={() => handleRemoverPerfil(perfil)}
-                            fontSize={"small"}
-                            color={"error"}
-                            sx={{ cursor: "pointer" }}
-                          />
-                        </div>
-                      </div>
+              <div className="container-linha">
+                <div className="campos-03-cadastro">
+                  <label>Selecione uma Unidade</label>
+                  <select
+                    onChange={handleSelecionarUnidade}
+                    value={unidadeSelecionada}
+                  >
+                    <option>Selecione</option>
+                    {unidadesDisponiveis.map((unidade, index) => (
+                      <option key={index}>{unidade}</option>
                     ))}
-                  </div>
+                  </select>
                 </div>
-                <div className="colunas4-cadastro">
-                  <div className="container-linha-cadastro">
-                    <div className="campos-05-cadastro">
-                      <label>Selecione a Unidade</label>
-                      <select
-                        value={selectedUnidade}
-                        onChange={(e) => setSelectedUnidade(e.target.value)}
-                      >
-                        <option value="">Selecione...</option>
-                        <option value="Dourados">Dourados</option>
-                        <option value="Rio Brilhante">Rio Brilhante</option>
-                        <option value="Itaporã">Itaporã</option>
-                      </select>
+              </div>
+
+              <div className="container-cadastro-linha3-unidade">
+                {unidadesExibidas.map((unidade, index) => (
+                  <div className="unit-item" key={index}>
+                    <div className="unidade-selecionada-perfil">
+                      <label>{unidade}</label>
+                      <button onClick={() => handleRemoverUnidade(unidade)}>
+                        <HighlightOffIcon fontSize={"small"} />
+                      </button>
                     </div>
-                    <div className="permissoe-selecione-cadastro">
-                      <label>Permissões</label>
-                      <select
-                        value={selectedPermissao}
-                        onChange={(e) => setSelectedPermissao(e.target.value)}
-                      >
-                        <option value="">Selecione...</option>
-                        <option value="Controle">Controle</option>
-                        <option value="Venda">Venda</option>
-                        <option value="Associado">Associado</option>
-                      </select>
-                    </div>
-                    <button onClick={handleAddItem}>
-                      <AddCircleOutlineIcon fontSize="small" />
-                    </button>
                   </div>
+                ))}
+              </div>
+            </div>
+            <div className="container-cadastro-linha3">
+              <div className="divide-2-cadastro">
+                <div className="colunas4-cadastro">
+                  <h1>
+                    <AssignmentTurnedInIcon fontSize={"small"} /> Permissões
+                  </h1>
+                  <div className="fundo-colunas-5-cadastro">
+                    <div className="container-linha-cadastro">
+                      <div className="campos-05-cadastro">
+                        <label>Selecione a Unidade</label>
+                        <select
+                          value={selectedUnidade}
+                          onChange={(e) => setSelectedUnidade(e.target.value)}
+                        >
+                          <option value="">Selecione...</option>
+                          <option value="Dourados">Dourados</option>
+                          <option value="Rio Brilhante">Rio Brilhante</option>
+                          <option value="Itaporã">Itaporã</option>
+                        </select>
+                      </div>
+                      <div className="permissoe-selecione-cadastro">
+                        <label>Permissões</label>
+                        <select
+                          value={selectedPermissao}
+                          onChange={(e) => setSelectedPermissao(e.target.value)}
+                        >
+                          <option value="">Selecione...</option>
+                          <option value="Controle">Controle</option>
+                          <option value="Venda">Venda</option>
+                          <option value="Associado">Associado</option>
+                        </select>
+                      </div>
+                      <button onClick={handleAddItem}>
+                        <AddCircleOutlineIcon fontSize="small" />
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="per-uni">
                     <div className="per-uni3">
                       {addedItems.map((item, index) => (
@@ -504,23 +519,26 @@ const Perfil = () => {
                     </div>
                   </div>
                 </div>
+                <div className="colunas5-cadastro">
+                  <h1>
+                    <DashboardIcon fontSize={"small"} /> Acessos
+                  </h1>
+                  <div className="fundo-colunas-6-cadastro">
+                    <div className="container-linha-cadastro3">
+                      <div className="acessos-cadastro">
+                        <Checkbox {...label} size="small" />
+                        <label>Pax Vendedor</label>
+                      </div>
+                      <div className="acessos-cadastro">
+                        <Checkbox {...label} size="small" />
+                        <label>Pax Cobrador</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="container-cadastro-linha3">
-              <h1>
-                <DashboardIcon fontSize={"small"} /> Acessos
-              </h1>
-              <div className="container-linha-cadastro">
-                <div className="acessos-cadastro">
-                  <Checkbox {...label} size="small" />
-                  <label>Pax Vendedor</label>
-                </div>
-                <div className="acessos-cadastro">
-                  <Checkbox {...label} size="small" />
-                  <label>Pax Cobrador</label>
-                </div>
-              </div>
-            </div>
+
             <div className="container-cadastro-linha4">
               <div className="salva-perfil-cadastro">
                 <ButtonIconTextoStart

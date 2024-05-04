@@ -14,6 +14,7 @@ import HeaderPax from "../../../components/header-pax";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ModalEdicao from "../../../components/modal-edicao";
 import PlaceIcon from "@mui/icons-material/Place";
+import ModalConfirma from "../../../components/modal-confirma";
 
 function createData(name, status, opcoes) {
   return { name, status, opcoes };
@@ -29,6 +30,7 @@ const Planos = () => {
   const [funcaoEstado, setFuncaoEstado] = useState(funcaoData);
   const [modalEdicaoOpen, setModalEdicaoOpen] = useState(false);
   const [modalReajusteOpen, setModalReajuste] = useState(false);
+  const [modalSalvaOpen, setModalSalva] = useState(false);
   const [modalCadastroOpen, setModalCadastro] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState("");
   const [selectedUnits, setSelectedUnits] = useState([]);
@@ -39,6 +41,8 @@ const Planos = () => {
     "Plano Luxo",
     "Plano Super Luxo",
   ]);
+  const [selectedPlanToAdd, setSelectedPlanToAdd] = useState(""); // Nova variável de estado para acompanhar o plano a ser adicionado
+  const [selectedUnitToAdd, setSelectedUnitToAdd] = useState("");
 
   const handlePlanChange = (event) => {
     const selectedPlan = event.target.value;
@@ -96,6 +100,43 @@ const Planos = () => {
 
   const fecharModalReajuste = () => {
     setModalReajuste(false);
+  };
+
+  const abrirModalSalvar = () => {
+    setModalSalva(true);
+  };
+
+  const fecharModalSalva = () => {
+    setModalSalva(false);
+  };
+
+  const handlePlanChangeToAdd = (event) => {
+    const selectedPlan = event.target.value;
+    setSelectedPlanToAdd(selectedPlan);
+  };
+
+  const handleUnitChangeToAdd = (event) => {
+    const selectedUnit = event.target.value;
+    setSelectedUnitToAdd(selectedUnit);
+  };
+
+  const handleAddPlanToUnit = () => {
+    if (selectedPlanToAdd && selectedUnitToAdd) {
+      // Adicionar a combinação de plano e unidade selecionados aos planos selecionados
+      const newPlan = {
+        plan: selectedPlanToAdd,
+        unit: selectedUnitToAdd,
+      };
+      setSelectedPlans([...selectedPlans, newPlan]);
+      setAvailablePlans(
+        availablePlans.filter((plan) => plan !== selectedPlanToAdd)
+      );
+      // Limpar seleções
+      setSelectedPlanToAdd("");
+      setSelectedUnitToAdd("");
+    } else {
+      console.log("Por favor, selecione um plano e uma unidade.");
+    }
   };
   return (
     <div className="container-cadastro">
@@ -219,7 +260,10 @@ const Planos = () => {
             <div className="linhas-campos-cadastro">
               <div className="tipo-parentesco-cadas">
                 <label>Selecione o Plano</label>
-                <select value="" onChange={handlePlanChange}>
+                <select
+                  value={selectedPlanToAdd}
+                  onChange={handlePlanChangeToAdd}
+                >
                   <option disabled value="">
                     Selecione
                   </option>
@@ -232,11 +276,16 @@ const Planos = () => {
               </div>
               <div className="tipo-parentesco-cadas">
                 <label>Selecione a Unidade</label>
-                <select>
+                <select
+                  value={selectedUnitToAdd}
+                  onChange={handleUnitChangeToAdd}
+                >
                   <option>Selecione</option>
-                  <option>Dourados</option>
-                  <option>Itaporã</option>
-                  <option>Ponta Porã</option>
+                  {units.map((unit) => (
+                    <option key={unit} value={unit}>
+                      {unit}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="buttao-salvar-parentesco">
@@ -244,6 +293,7 @@ const Planos = () => {
                   title={"ADICIONAR"}
                   corFundoBotao={"#006b33"}
                   corTextoBotao={"#ffff"}
+                  funcao={handleAddPlanToUnit}
                 />
               </div>
               <div className="buttao-salvar-parentesco">
@@ -251,17 +301,37 @@ const Planos = () => {
                   title={"SALVAR"}
                   corFundoBotao={"#006b33"}
                   corTextoBotao={"#ffff"}
+                  funcao={() => abrirModalSalvar()}
                 />
               </div>
+              <ModalConfirma isOpen={modalSalvaOpen} onClose={fecharModalSalva}>
+                <div className="salva-altera-planos">
+                  <h1>Deseja realmente alterar os valores?</h1>
+                  <div className="dois-botao-sim-nao">
+                    <ButtonIconTextoStart
+                      title={"SIM"}
+                      corFundoBotao={"#006b33"}
+                      fontWeightBotao={'700'}
+                      corTextoBotao={"#ffff"}
+                    />
+                    <ButtonIconTextoStart
+                      title={"NÃO"}
+                      corFundoBotao={"#FF0000"}
+                      fontWeightBotao={'700'}
+                      corTextoBotao={"#ffff"}
+                    />
+                  </div>
+                </div>
+              </ModalConfirma>
             </div>
             <div className="linhas-campos-cadastro">
               <label>Planos Selecionados:</label>
             </div>
             <div className="linhas-campos-cadastro">
-              {selectedPlans.map((plan) => (
-                <div key={plan} className="plano-selecionado-cadastro2">
+              {selectedPlans.map((plan, index) => (
+                <div key={index} className="plano-selecionado-cadastro2">
                   <div className="plano-selecionado-cadastro">
-                    <p>{plan}</p>
+                    <p>{plan.plan}</p>
                     <button onClick={() => handlePlanDelete(plan)}>
                       <HighlightOffIcon fontSize={"small"} />
                     </button>
@@ -269,6 +339,7 @@ const Planos = () => {
                   <div className="valores-plano-mensalidade">
                     <a>
                       <PlaceIcon fontSize={"small"} />
+                      {plan.unit}
                     </a>
                   </div>
                   <div className="valores-plano-mensalidade">

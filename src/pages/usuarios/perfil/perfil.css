@@ -259,6 +259,13 @@
   width: 100%;
 }
 
+.container-linha-cadastro3{
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+}
+
 .container-linha-cadastro2{
   display: flex;
   align-items: center;
@@ -404,10 +411,27 @@
   flex-direction: column;
   gap: 5px;
   width: 60%;
+}
+
+.fundo-colunas-5-cadastro{
   padding: 10px;
   border: 1px solid var(--verde);
   border-radius: 5px;
 }
+
+.colunas5-cadastro{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 40%;
+}
+
+.fundo-colunas-6-cadastro{
+  padding: 10px;
+  border: 1px solid var(--verde);
+  border-radius: 5px;
+}
+
 
 .divide-2-cadastro{
   width: 100%;
@@ -466,7 +490,7 @@
   align-items: center;
   border: 1px solid var(--verde);
   border-radius: 5px;
-  width: 23%;
+  width: 80%;
 }
 
 .acessos-cadastro label{
@@ -489,7 +513,6 @@
   background-color: var(--cinza-leve);
   width: 95%;
   border-radius: 5px;
-  margin-top: 5px;
   padding: 5px;
 }
 
